@@ -1,6 +1,14 @@
 "use client"
 import { useState } from "react"
-import { ChevronDown, GalleryVerticalEnd, Home, LayoutDashboard, Settings, Users } from "lucide-react"
+import {
+  ChevronDown,
+  GalleryVerticalEnd,
+  LayoutDashboard,
+  Settings,
+  Wallet,
+  Wrench,
+  LogOut
+} from "lucide-react";
 
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import {
@@ -32,15 +40,27 @@ const menuItems = [
     url: "#",
   },
   {
-    id: "users",
-    title: "Users",
-    icon: Users,
+    id: "Asset",
+    title: "Asset",
+    icon: Wallet,
     url: "#",
     submenu: [
       { id: "all-users", title: "All Users", url: "#" },
       { id: "add-user", title: "Add New User", url: "#" },
       { id: "user-groups", title: "User Groups", url: "#" },
       { id: "permissions", title: "Permissions", url: "#" },
+    ],
+  },
+  {
+    id: "Deepsea",
+    title: "Deepsea",
+    icon: Settings,
+    url: "#",
+    submenu: [
+      { id: "Top gainer", title: "Top gainer", url: "#" },
+      { id: "Top loser", title: "Top loser", url: "#" },
+      { id: "Heap map", title: "Heap map", url: "#", isActive: true },
+      { id: "billing", title: "Billing", url: "#" },
     ],
   },
   {
@@ -61,7 +81,7 @@ export function DashboardLayout() {
   // Track which dropdown menus are open
   const [openMenus, setOpenMenus] = useState({
     // Pre-open the menu with the active item
-    settings: true,
+    asset: true,
   })
 
   // Toggle a specific dropdown menu
@@ -74,7 +94,6 @@ export function DashboardLayout() {
 
   return (
     <SidebarProvider className={"w-[99vw]"} defaultOpen={true}>
-      
       <Sidebar collapsible="icon">
         <SidebarHeader>
           <SidebarMenu>
@@ -93,12 +112,11 @@ export function DashboardLayout() {
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarHeader>
-        
+
         <SidebarContent>
           <SidebarGroup>
             <SidebarGroupLabel>Main Menu</SidebarGroupLabel>
             <SidebarGroupContent>
-              
               <SidebarMenu>
                 {menuItems.map((item) =>
                   item.submenu ? (
@@ -114,7 +132,9 @@ export function DashboardLayout() {
                             <item.icon className="size-4" />
                             <span>{item.title}</span>
                             <ChevronDown
-                              className={`ml-auto size-4 transition-transform ${openMenus[item.id] ? "rotate-180" : ""}`}
+                              className={`ml-auto size-4 transition-transform ${
+                                openMenus[item.id] ? "rotate-180" : ""
+                              }`}
                             />
                           </SidebarMenuButton>
                         </CollapsibleTrigger>
@@ -122,7 +142,10 @@ export function DashboardLayout() {
                           <SidebarMenuSub>
                             {item.submenu.map((subItem) => (
                               <SidebarMenuSubItem key={subItem.id}>
-                                <SidebarMenuSubButton asChild isActive={subItem.isActive}>
+                                <SidebarMenuSubButton
+                                  asChild
+                                  isActive={subItem.isActive}
+                                >
                                   <a href={subItem.url}>{subItem.title}</a>
                                 </SidebarMenuSubButton>
                               </SidebarMenuSubItem>
@@ -140,20 +163,39 @@ export function DashboardLayout() {
                         </a>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
-                  ),
+                  )
                 )}
               </SidebarMenu>
-
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>
         <SidebarFooter>
           <SidebarMenu>
-            <SidebarMenuItem>
+            {/* <SidebarMenuItem>
               <SidebarMenuButton asChild tooltip="Home">
                 <a href="#">
                   <Home className="size-4" />
                   <span>Back to Home</span>
+                </a>
+              </SidebarMenuButton>
+            </SidebarMenuItem> */}
+            <SidebarMenuItem>
+              <SidebarMenuButton asChild tooltip={"Settings"}>
+                <a href={"#"}>
+                  <Settings className="size-4" />
+                  <span className="">Settings</span>
+                </a>
+              </SidebarMenuButton>
+              <SidebarMenuButton asChild tooltip={"Settings"}>
+                <a href={"#"}>
+                  <Wrench className="size-4" />
+                  <span className="">Support</span>
+                </a>
+              </SidebarMenuButton>
+              <SidebarMenuButton asChild tooltip={"Settings"}>
+                <a href={"#"}>
+                  <LogOut className="size-4" />
+                  <span className="">LogOut</span>
                 </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
@@ -162,7 +204,7 @@ export function DashboardLayout() {
         <SidebarRail />
       </Sidebar>
 
-      <SidebarInset className={"w-full" }>
+      <SidebarInset className={"w-full"}>
         <header className="flex h-12 shrink-0 items-center gap-2 border-b px-4">
           <SidebarTrigger className="-ml-1" />
           <div className="ml-2 text-lg font-semibold">Content Area</div>
@@ -176,14 +218,17 @@ export function DashboardLayout() {
           <div className="min-h-[50vh] flex-1 rounded-xl bg-muted/50 md:min-h-min p-6">
             <h2 className="text-2xl font-bold mb-4">Collapsible Sidebar</h2>
             <p className="mb-4">
-              Click the menu button in the header to collapse/expand the sidebar. When collapsed, only icons will be
-              shown.
+              Click the menu button in the header to collapse/expand the
+              sidebar. When collapsed, only icons will be shown.
             </p>
-            <p className="mb-4">Hover over icons in collapsed mode to see tooltips with menu item names.</p>
+            <p className="mb-4">
+              Hover over icons in collapsed mode to see tooltips with menu item
+              names.
+            </p>
             <p>You can also click and drag the sidebar edge to resize it.</p>
           </div>
         </div>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }
