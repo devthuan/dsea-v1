@@ -1,0 +1,2533 @@
+{
+  "bitcoinNetFlowDay": {
+    "address": "0x8E4631B553171507071c6bE3c6558B8E1c57433a",
+    "abi": [
+      {
+        "inputs": [],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "tokenSymbol",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "exchangeName",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "inflow",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "outflow",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "balance",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "asset_type",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "transaction_count",
+            "type": "string"
+          }
+        ],
+        "name": "FlowTotalRecorded",
+        "type": "event"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "endTimestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "tokenSymbol",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "exchangeName",
+            "type": "string"
+          }
+        ],
+        "name": "getFlow7ItemsAgo",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "inflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "outflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "balance",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "symbol",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "exchange",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "asset_type",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "transaction_count",
+                "type": "string"
+              },
+              {
+                "internalType": "bool",
+                "name": "initialized",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct BitcoinNetFlowDay.FlowData[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "startTimestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "endTimestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "tokenSymbol",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "exchangeName",
+            "type": "string"
+          }
+        ],
+        "name": "getFlowInRange",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "inflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "outflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "balance",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "symbol",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "exchange",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "asset_type",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "transaction_count",
+                "type": "string"
+              },
+              {
+                "internalType": "bool",
+                "name": "initialized",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct BitcoinNetFlowDay.FlowData[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "tokenSymbol",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "exchangeName",
+            "type": "string"
+          }
+        ],
+        "name": "getFlowbyTime",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "inflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "outflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "balance",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "symbol",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "exchange",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "asset_type",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "transaction_count",
+                "type": "string"
+              },
+              {
+                "internalType": "bool",
+                "name": "initialized",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct BitcoinNetFlowDay.FlowData",
+            "name": "",
+            "type": "tuple"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "inflow",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "outflow",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "balance",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "tokenSymbol",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "exchangeName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "asset_type",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "transaction_count",
+            "type": "string"
+          }
+        ],
+        "name": "recordFlow",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      }
+    ]
+  },
+  "bitcoinNetFlowWeek": {
+    "address": "0xFD47646625B1281b8873A5B02dbbf14B3E30772F",
+    "abi": [
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "tokenSymbol",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "exchangeName",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "inflow",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "outflow",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "balance",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "asset_type",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "transaction_count",
+				"type": "string"
+			}
+		],
+		"name": "FlowTotalRecorded",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "inflow",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "outflow",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "balance",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "tokenSymbol",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "exchangeName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "asset_type",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "transaction_count",
+				"type": "string"
+			}
+		],
+		"name": "recordFlow",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "endTimestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "tokenSymbol",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "exchangeName",
+				"type": "string"
+			}
+		],
+		"name": "getFlow7ItemsAgo",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "inflow",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "outflow",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "balance",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "symbol",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "exchange",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "asset_type",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "transaction_count",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "initialized",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct BitcoinNetFlowByWeek.FlowData[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "tokenSymbol",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "exchangeName",
+				"type": "string"
+			}
+		],
+		"name": "getFlowbyTime",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "inflow",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "outflow",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "balance",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "symbol",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "exchange",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "asset_type",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "transaction_count",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "initialized",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct BitcoinNetFlowByWeek.FlowData",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "startTimestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "endTimestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "tokenSymbol",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "exchangeName",
+				"type": "string"
+			}
+		],
+		"name": "getFlowInRange",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "inflow",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "outflow",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "balance",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "symbol",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "exchange",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "asset_type",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "transaction_count",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "initialized",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct BitcoinNetFlowByWeek.FlowData[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
+  },
+  "bitcoinNetFlowMonth": {
+    "address": "0xfE2C0AD0b61e98b3862335cE41b7bCDd7a10Bc25",
+    "abi": [
+      {
+        "inputs": [],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "tokenSymbol",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "exchangeName",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "inflow",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "outflow",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "balance",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "asset_type",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "transaction_count",
+            "type": "string"
+          }
+        ],
+        "name": "FlowTotalRecorded",
+        "type": "event"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "inflow",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "outflow",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "balance",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "tokenSymbol",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "exchangeName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "asset_type",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "transaction_count",
+            "type": "string"
+          }
+        ],
+        "name": "recordFlow",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "endTimestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "tokenSymbol",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "exchangeName",
+            "type": "string"
+          }
+        ],
+        "name": "getFlow7ItemsAgo",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "inflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "outflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "balance",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "symbol",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "exchange",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "asset_type",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "transaction_count",
+                "type": "string"
+              },
+              {
+                "internalType": "bool",
+                "name": "initialized",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct BitcoinNetFlowByMonth.FlowData[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "tokenSymbol",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "exchangeName",
+            "type": "string"
+          }
+        ],
+        "name": "getFlowby",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "inflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "outflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "balance",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "symbol",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "exchange",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "asset_type",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "transaction_count",
+                "type": "string"
+              },
+              {
+                "internalType": "bool",
+                "name": "initialized",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct BitcoinNetFlowByMonth.FlowData",
+            "name": "",
+            "type": "tuple"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "startTimestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "endTimestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "tokenSymbol",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "exchangeName",
+            "type": "string"
+          }
+        ],
+        "name": "getFlowInRange",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "inflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "outflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "balance",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "symbol",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "exchange",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "asset_type",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "transaction_count",
+                "type": "string"
+              },
+              {
+                "internalType": "bool",
+                "name": "initialized",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct BitcoinNetFlowByMonth.FlowData[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      }
+    ]
+  },
+
+  "stablecoinNetFlowDay": {
+    "address": "0x2aE46e09D94aC3540Ac436b527288836f0BEFeC6",
+    "abi": [
+      {
+        "inputs": [],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "tokenSymbol",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "exchangeName",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "inflow",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "outflow",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "balance",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "asset_type",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "transaction_count",
+            "type": "string"
+          }
+        ],
+        "name": "FlowTotalRecorded",
+        "type": "event"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "inflow",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "outflow",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "balance",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "tokenSymbol",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "exchangeName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "asset_type",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "transaction_count",
+            "type": "string"
+          }
+        ],
+        "name": "recordFlow",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "endTimestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "tokenSymbol",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "exchangeName",
+            "type": "string"
+          }
+        ],
+        "name": "getFlow7ItemsAgo",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "inflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "outflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "balance",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "symbol",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "exchange",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "asset_type",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "transaction_count",
+                "type": "string"
+              },
+              {
+                "internalType": "bool",
+                "name": "initialized",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct StableCoinNetFlowDay.FlowData[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "tokenSymbol",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "exchangeName",
+            "type": "string"
+          }
+        ],
+        "name": "getFlowbyTime",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "inflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "outflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "balance",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "symbol",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "exchange",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "asset_type",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "transaction_count",
+                "type": "string"
+              },
+              {
+                "internalType": "bool",
+                "name": "initialized",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct StableCoinNetFlowDay.FlowData",
+            "name": "",
+            "type": "tuple"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "startTimestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "endTimestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "tokenSymbol",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "exchangeName",
+            "type": "string"
+          }
+        ],
+        "name": "getFlowInRange",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "inflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "outflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "balance",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "symbol",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "exchange",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "asset_type",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "transaction_count",
+                "type": "string"
+              },
+              {
+                "internalType": "bool",
+                "name": "initialized",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct StableCoinNetFlowDay.FlowData[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      }
+    ]
+  },
+  "stablecoinNetFlowWeek": {
+    "address": "0xd89b9d976772720C5bceF45618857a7B83191d33",
+    "abi": [
+      {
+        "inputs": [],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "tokenSymbol",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "exchangeName",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "inflow",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "outflow",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "balance",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "asset_type",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "transaction_count",
+            "type": "string"
+          }
+        ],
+        "name": "FlowTotalRecorded",
+        "type": "event"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "inflow",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "outflow",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "balance",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "tokenSymbol",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "exchangeName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "asset_type",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "transaction_count",
+            "type": "string"
+          }
+        ],
+        "name": "recordFlow",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "endTimestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "tokenSymbol",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "exchangeName",
+            "type": "string"
+          }
+        ],
+        "name": "getFlow7ItemsAgo",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "inflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "outflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "balance",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "symbol",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "exchange",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "asset_type",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "transaction_count",
+                "type": "string"
+              },
+              {
+                "internalType": "bool",
+                "name": "initialized",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct StableCoinNetFlowByWeek.FlowData[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "tokenSymbol",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "exchangeName",
+            "type": "string"
+          }
+        ],
+        "name": "getFlowbyTime",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "inflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "outflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "balance",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "symbol",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "exchange",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "asset_type",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "transaction_count",
+                "type": "string"
+              },
+              {
+                "internalType": "bool",
+                "name": "initialized",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct StableCoinNetFlowByWeek.FlowData",
+            "name": "",
+            "type": "tuple"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "startTimestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "endTimestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "tokenSymbol",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "exchangeName",
+            "type": "string"
+          }
+        ],
+        "name": "getFlowInRange",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "inflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "outflow",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "balance",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "symbol",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "exchange",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "asset_type",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "transaction_count",
+                "type": "string"
+              },
+              {
+                "internalType": "bool",
+                "name": "initialized",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct StableCoinNetFlowByWeek.FlowData[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      }
+    ]
+  },
+  "stablecoinNetFlowMonth": {
+    "address": "0xf6F03D4Cc1dFD881adb8c17E9745322F6EC84B55",
+    "abi": [
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "tokenSymbol",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "exchangeName",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "inflow",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "outflow",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "balance",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "asset_type",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "transaction_count",
+				"type": "string"
+			}
+		],
+		"name": "FlowTotalRecorded",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "endTimestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "tokenSymbol",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "exchangeName",
+				"type": "string"
+			}
+		],
+		"name": "getFlow7ItemsAgo",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "inflow",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "outflow",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "balance",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "symbol",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "exchange",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "asset_type",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "transaction_count",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "initialized",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct StableCoinNetFlowByMonth.FlowData[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "startTimestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "endTimestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "tokenSymbol",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "exchangeName",
+				"type": "string"
+			}
+		],
+		"name": "getFlowInRange",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "inflow",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "outflow",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "balance",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "symbol",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "exchange",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "asset_type",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "transaction_count",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "initialized",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct StableCoinNetFlowByMonth.FlowData[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "tokenSymbol",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "exchangeName",
+				"type": "string"
+			}
+		],
+		"name": "getFlowby",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "inflow",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "outflow",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "balance",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "symbol",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "exchange",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "asset_type",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "transaction_count",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "initialized",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct StableCoinNetFlowByMonth.FlowData",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "inflow",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "outflow",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "balance",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "tokenSymbol",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "exchangeName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "asset_type",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "transaction_count",
+				"type": "string"
+			}
+		],
+		"name": "recordFlow",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+    ]
+  },
+
+  "heapmapDay": {
+    "address": "0xD001a4886191EB87C3B88831D5fBee42a1860851",
+    "abi":[
+      {
+        "inputs": [],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "name",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "price",
+                "type": "uint256"
+              },
+              {
+                "internalType": "int256",
+                "name": "change_percent",
+                "type": "int256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "volume",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "market_cap",
+                "type": "uint256"
+              },
+              {
+                "internalType": "bool",
+                "name": "initialized",
+                "type": "bool"
+              },
+              {
+                "internalType": "string",
+                "name": "tag",
+                "type": "string"
+              }
+            ],
+            "indexed": false,
+            "internalType": "struct HeatmapTrackerByDayV2.MarketData[]",
+            "name": "marketDataList",
+            "type": "tuple[]"
+          }
+        ],
+        "name": "MarketDataRecorded",
+        "type": "event"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "start_timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "end_timestamp",
+            "type": "uint256"
+          }
+        ],
+        "name": "getAllMarketDataInRange",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "name",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "price",
+                "type": "uint256"
+              },
+              {
+                "internalType": "int256",
+                "name": "change_percent",
+                "type": "int256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "volume",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "market_cap",
+                "type": "uint256"
+              },
+              {
+                "internalType": "bool",
+                "name": "initialized",
+                "type": "bool"
+              },
+              {
+                "internalType": "string",
+                "name": "tag",
+                "type": "string"
+              }
+            ],
+            "internalType": "struct HeatmapTrackerByDayV2.MarketData[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          }
+        ],
+        "name": "getAllMarketDataNow",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "name",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "price",
+                "type": "uint256"
+              },
+              {
+                "internalType": "int256",
+                "name": "change_percent",
+                "type": "int256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "volume",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "market_cap",
+                "type": "uint256"
+              },
+              {
+                "internalType": "bool",
+                "name": "initialized",
+                "type": "bool"
+              },
+              {
+                "internalType": "string",
+                "name": "tag",
+                "type": "string"
+              }
+            ],
+            "internalType": "struct HeatmapTrackerByDayV2.MarketData[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "top_count",
+            "type": "uint256"
+          }
+        ],
+        "name": "getTopGainers",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "name",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "price",
+                "type": "uint256"
+              },
+              {
+                "internalType": "int256",
+                "name": "change_percent",
+                "type": "int256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "volume",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "market_cap",
+                "type": "uint256"
+              },
+              {
+                "internalType": "bool",
+                "name": "initialized",
+                "type": "bool"
+              },
+              {
+                "internalType": "string",
+                "name": "tag",
+                "type": "string"
+              }
+            ],
+            "internalType": "struct HeatmapTrackerByDayV2.MarketData[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "top_count",
+            "type": "uint256"
+          }
+        ],
+        "name": "getTopLosers",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "name",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "price",
+                "type": "uint256"
+              },
+              {
+                "internalType": "int256",
+                "name": "change_percent",
+                "type": "int256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "volume",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "market_cap",
+                "type": "uint256"
+              },
+              {
+                "internalType": "bool",
+                "name": "initialized",
+                "type": "bool"
+              },
+              {
+                "internalType": "string",
+                "name": "tag",
+                "type": "string"
+              }
+            ],
+            "internalType": "struct HeatmapTrackerByDayV2.MarketData[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "s",
+            "type": "string"
+          }
+        ],
+        "name": "parseInt",
+        "outputs": [
+          {
+            "internalType": "int256",
+            "name": "",
+            "type": "int256"
+          }
+        ],
+        "stateMutability": "pure",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string[][]",
+            "name": "input_data",
+            "type": "string[][]"
+          }
+        ],
+        "name": "recordData",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      }
+    ]
+  }
+}

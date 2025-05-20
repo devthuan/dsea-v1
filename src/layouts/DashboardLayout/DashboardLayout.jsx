@@ -1,5 +1,5 @@
-"use client"
-import { useState } from "react"
+"use client";
+import { useState } from "react";
 import {
   ChevronDown,
   GalleryVerticalEnd,
@@ -7,10 +7,27 @@ import {
   Settings,
   Wallet,
   Wrench,
-  LogOut
+  LogOut,
+  EllipsisVertical,
+  BellDot,
+  FishSymbol,
 } from "lucide-react";
 
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
+
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
+
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import {
   Sidebar,
   SidebarContent,
@@ -29,7 +46,8 @@ import {
   SidebarProvider,
   SidebarRail,
   SidebarTrigger,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 // Sample data for the sidebar menu
 const menuItems = [
@@ -45,22 +63,22 @@ const menuItems = [
     icon: Wallet,
     url: "#",
     submenu: [
-      { id: "all-users", title: "All Users", url: "#" },
-      { id: "add-user", title: "Add New User", url: "#" },
-      { id: "user-groups", title: "User Groups", url: "#" },
-      { id: "permissions", title: "Permissions", url: "#" },
+      { id: "Top gainer", title: "Top gainer", url: "#" },
+      { id: "Top loser", title: "Top loser", url: "#" },
+      { id: "Heap map", title: "Heap map", url: "#", isActive: true },
+      { id: "billing", title: "Billing", url: "#" },
     ],
   },
   {
     id: "Deepsea",
     title: "Deepsea",
-    icon: Settings,
+    icon: FishSymbol,
     url: "#",
     submenu: [
-      { id: "Top gainer", title: "Top gainer", url: "#" },
-      { id: "Top loser", title: "Top loser", url: "#" },
-      { id: "Heap map", title: "Heap map", url: "#", isActive: true },
-      { id: "billing", title: "Billing", url: "#" },
+      { id: "all-users", title: "All Users", url: "#" },
+      { id: "add-user", title: "Add New User", url: "#" },
+      { id: "user-groups", title: "User Groups", url: "#" },
+      { id: "permissions", title: "Permissions", url: "#" },
     ],
   },
   {
@@ -75,22 +93,22 @@ const menuItems = [
       { id: "billing", title: "Billing", url: "#" },
     ],
   },
-]
+];
 
-export function DashboardLayout() {
+export function DashboardLayout({ children }) {
   // Track which dropdown menus are open
   const [openMenus, setOpenMenus] = useState({
     // Pre-open the menu with the active item
     asset: true,
-  })
+  });
 
   // Toggle a specific dropdown menu
   const toggleMenu = (menuId) => {
     setOpenMenus((prev) => ({
       ...prev,
       [menuId]: !prev[menuId],
-    }))
-  }
+    }));
+  };
 
   return (
     <SidebarProvider className={"w-[99vw]"} defaultOpen={true}>
@@ -169,16 +187,9 @@ export function DashboardLayout() {
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>
+
         <SidebarFooter>
           <SidebarMenu>
-            {/* <SidebarMenuItem>
-              <SidebarMenuButton asChild tooltip="Home">
-                <a href="#">
-                  <Home className="size-4" />
-                  <span>Back to Home</span>
-                </a>
-              </SidebarMenuButton>
-            </SidebarMenuItem> */}
             <SidebarMenuItem>
               <SidebarMenuButton asChild tooltip={"Settings"}>
                 <a href={"#"}>
@@ -205,29 +216,35 @@ export function DashboardLayout() {
       </Sidebar>
 
       <SidebarInset className={"w-full"}>
-        <header className="flex h-12 shrink-0 items-center gap-2 border-b px-4">
+        <header className="flex h-12 shrink-0 items-center justify-between gap-2 border-b px-4">
           <SidebarTrigger className="-ml-1" />
+
           <div className="ml-2 text-lg font-semibold">Content Area</div>
+          <div className="flex items-center gap-1">
+            <div className="cursor-pointer rounded-md p-2 flex justify-center items-center text-[var(--primary)] hover:bg-muted/50">
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <BellDot />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Notification</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
+            <div className="cursor-pointer rounded-md p-2 hover:bg-muted/50">
+              <Avatar>
+                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+            </div>
+            <div className="cursor-pointer rounded-md p-2 hover:bg-muted/50">
+              <EllipsisVertical />
+            </div>
+          </div>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
-          </div>
-          <div className="min-h-[50vh] flex-1 rounded-xl bg-muted/50 md:min-h-min p-6">
-            <h2 className="text-2xl font-bold mb-4">Collapsible Sidebar</h2>
-            <p className="mb-4">
-              Click the menu button in the header to collapse/expand the
-              sidebar. When collapsed, only icons will be shown.
-            </p>
-            <p className="mb-4">
-              Hover over icons in collapsed mode to see tooltips with menu item
-              names.
-            </p>
-            <p>You can also click and drag the sidebar edge to resize it.</p>
-          </div>
-        </div>
+        <div className="h-full flex-1 overflow-auto px-4 py-2">{children}</div>
       </SidebarInset>
     </SidebarProvider>
   );

@@ -1,0 +1,49 @@
+@import 'normalize.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400;1,900&display=swap');
+
+
+:root {
+    --primary: #76E1DB;
+    --white: #f4e6cd;
+    --black: #1e211e;
+    --spacing--letter-spacing-h1: -.045em;
+    --spacing--line-height-h2: 1em;
+    --primary-hover: #a29a65;
+    --border: #1e211e33;
+    --box: #a58f6417;
+    --text-medium: #1e211e;
+    --spacing--letter-spacing-h2: -.03em;
+    --spacing--line-height-h1: .9em;
+    --text-light: #b4b4b4;
+    --box-full-color: #edddc3;
+    --transparent: transparent;
+    --spacing--margin-desktop: 120px;
+    --border-radius: 4px;
+    --red: #8c3b28;
+    --primary-dark: #7b7447;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: "Roboto", sans-serif;
+       
+   
+   
+}
+

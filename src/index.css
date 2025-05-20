@@ -4,59 +4,84 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;  
-  -moz-osx-font-smoothing: grayscale;
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* Core Colors */
+  --radius: 1rem; /* Border radius mặc định cho các component */
+  --background: oklch(1 0 0); /* Nền trang - trắng tuyền */
+  --foreground: oklch(0.141 0.005 285.823); /* Chữ chính - đen xám */
+  
+  /* Component Colors */
+  --card: oklch(1 0 0); /* Nền card - trắng */
+  --card-foreground: oklch(0.141 0.005 285.823); /* Chữ trên card */
+  --popover: oklch(1 0 0); /* Nền popover - trắng */
+  --popover-foreground: oklch(0.141 0.005 285.823); /* Chữ popover */
+  
+  /* Primary Colors */
+  --primary: oklch(0.623 0.214 259.815); /* Màu chính - tím sáng */
+  --primary-foreground: oklch(0.97 0.014 254.604); /* Chữ trên nền primary - trắng ngà */
+  
+  /* Secondary Colors */
+  --secondary: oklch(0.967 0.001 286.375); /* Màu phụ - xám nhạt */
+  --secondary-foreground: oklch(0.21 0.006 285.885); /* Chữ trên nền secondary */
+  
+  /* Muted Colors */
+  --muted: oklch(0.967 0.001 286.375); /* Nền muted - xám nhạt */
+  --muted-foreground: oklch(0.552 0.016 285.938); /* Chữ muted - xám trung */
+  
+  /* Accent Colors */
+  --accent: oklch(0.967 0.001 286.375); /* Màu nhấn - xám nhạt */
+  --accent-foreground: oklch(0.21 0.006 285.885); /* Chữ trên accent */
+  
+  /* Danger Color */
+  --destructive: oklch(0.577 0.245 27.325); /* Màu cảnh báo - đỏ cam */
+  
+  /* Border & Input */
+  --border: oklch(0.92 0.004 286.32); /* Viền component - xám rất nhạt */
+  --input: oklch(0.92 0.004 286.32); /* Nền input - xám nhạt */
+  --ring: oklch(0.623 0.214 259.815); /* Màu focus ring - tím */
+  
+  /* Chart Colors */
+  --chart-1: oklch(0.646 0.222 41.116); /* Biểu đồ 1 - cam */
+  --chart-2: oklch(0.6 0.118 184.704); /* Biểu đồ 2 - xanh lá */
+  --chart-3: oklch(0.398 0.07 227.392); /* Biểu đồ 3 - xanh dương */
+  --chart-4: oklch(0.828 0.189 84.429); /* Biểu đồ 4 - vàng */
+  --chart-5: oklch(0.769 0.188 70.08); /* Biểu đồ 5 - cam nhạt */
+  
+  /* Sidebar Colors */
+  --sidebar: oklch(0.985 0 0); /* Nền sidebar - trắng ngà */
+  --sidebar-foreground: oklch(0.141 0.005 285.823); /* Chữ sidebar */
+  --sidebar-primary: oklch(0.623 0.214 259.815); /* Màu chính sidebar - tím */
+  --sidebar-primary-foreground: oklch(0.97 0.014 254.604); /* Chữ trên nền primary sidebar */
+  --sidebar-accent: oklch(0.967 0.001 286.375); /* Màu nhấn sidebar - xám nhạt */
+  --sidebar-accent-foreground: oklch(0.21 0.006 285.885); /* Chữ trên accent sidebar */
+  --sidebar-border: oklch(0.92 0.004 286.32); /* Viền sidebar */
+  --sidebar-ring: oklch(0.623 0.214 259.815); /* Focus ring sidebar */
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+.dark {
+  /* Dark Mode Overrides */
+  --background: oklch(0.141 0.005 285.823); /* Nền tối - xám đen */
+  --foreground: oklch(0.985 0 0); /* Chữ sáng - trắng */
+  
+  /* Dark Component Colors */
+  --card: oklch(0.21 0.006 285.885); /* Nền card tối - xám đậm */
+  --card-foreground: oklch(0.985 0 0); /* Chữ card sáng */
+  
+  /* Dark Primary */
+  --primary: oklch(0.546 0.245 262.881); /* Màu chính tối - tím đậm */
+  --primary-foreground: oklch(0.379 0.146 265.522); /* Chữ trên primary tối */
+  
+  /* Dark Border/Input */
+  --border: oklch(1 0 0 / 10%); /* Viền trong suốt 10% */
+  --input: oklch(1 0 0 / 15%); /* Nền input trong suốt 15% */
+  
+  /* Dark Chart Colors */
+  --chart-1: oklch(0.488 0.243 264.376); /* Tím */
+  --chart-2: oklch(0.696 0.17 162.48); /* Xanh lơ */
+  --chart-3: oklch(0.769 0.188 70.08); /* Vàng */
+  
+  /* Dark Sidebar */
+  --sidebar: oklch(0.21 0.006 285.885); /* Nền sidebar tối */
+  --sidebar-foreground: oklch(0.985 0 0); /* Chữ sidebar sáng */
 }
 
 body {
@@ -67,42 +92,8 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
 
-/* button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}   */
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
