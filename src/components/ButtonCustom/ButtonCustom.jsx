@@ -31,7 +31,7 @@ const ButtonCustom = ({
         sizeClasses[size], // Áp dụng kích thước
         variantClasses[variant], // Áp dụng kiểu
         {
-          "outline outline-1 outline-offset-[-1px] outline-black": outline, // Áp dụng viền nếu outline là true
+          "outline outline-offset-[-1px] outline-black": outline, // Áp dụng viền nếu outline là true
         },
         className) // Thêm class tùy chỉnh từ props
       }

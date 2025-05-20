@@ -18,9 +18,9 @@ const BoxHeapMap = () => {
   ];
 
   const tabsTime = [
-    { value: "day", label: "day" },
-    { value: "week", label: "week" },
-    { value: "month", label: "month" },
+    { value: "Date", label: "Date" },
+    { value: "Week", label: "Week" }, 
+    { value: "Month", label: "Month" },
   ];
 
   //  useEffect(() => {

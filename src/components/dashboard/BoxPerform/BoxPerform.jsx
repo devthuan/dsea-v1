@@ -6,71 +6,91 @@ import TabButtons from "@/components/TabButtons/TabButtons";
 
 
  const tableDataContent = {
-    "24h": [
-      {
-        label: "Bitcoin",
-        icon: images.btcIcon,
-        price: "$100.86B",
-        percentageChange: "3.96",
-        trend: "up",
-        netInflow: "+3.96%",
-        color: "#F7931A",
-      },
-      {
-        label: "Ethereum",
-        icon: images.ethIcon,
-        price: "$45.72B",
-        percentageChange: "2.45",
-        trend: "up",
-        netInflow: "+2.45%",
-        color: "#627EEA",
-      },
-      {
-        label: "Solana",
-        icon: images.solIcon,
-        price: "$23.56B",
-        percentageChange: "-1.28",
-        trend: "down",
-        netInflow: "-1.28%",
-        color: "#00FFA3",
-      },
-      {
-        label: "Dogecoin",
-        icon: images.bnbIcon,
-        price: "$10.23B",
-        percentageChange: "5.73",
-        trend: "up",
-        netInflow: "+5.73%",
-        color: "#C2A633",
-      },
-      {
-        label: "Cardano",
-        icon: images.bnbIcon,
-        price: "$8.91B",
-        percentageChange: "-0.89",
-        trend: "down",
-        netInflow: "-0.89%",
-        color: "#0033AD",
-      },
-    ],
-    "1w": [
-      // Dữ liệu tương tự cho 1w
-    ],
-    "1m": [
-      // Dữ liệu tương tự cho 1m
-    ],
-    "1y": [
-      // Dữ liệu tương tự cho 1y
-    ],
-  };
+   "under perform": [
+     {
+       label: "Bitcoin",
+       icon: images.btcIcon,
+       price: "$100.86B",
+       percentageChange: "3.96",
+       trend: "up",
+       netInflow: "+3.96%",
+       color: "#F7931A",
+     },
+     {
+       label: "Ethereum",
+       icon: images.ethIcon,
+       price: "$45.72B",
+       percentageChange: "2.45",
+       trend: "up",
+       netInflow: "+2.45%",
+       color: "#627EEA",
+     },
+     {
+       label: "Solana",
+       icon: images.solIcon,
+       price: "$23.56B",
+       percentageChange: "-1.28",
+       trend: "down",
+       netInflow: "-1.28%",
+       color: "#00FFA3",
+     },
+     {
+       label: "Dogecoin",
+       icon: images.bnbIcon,
+       price: "$10.23B",
+       percentageChange: "5.73",
+       trend: "up",
+       netInflow: "+5.73%",
+       color: "#C2A633",
+     },
+     {
+       label: "Cardano",
+       icon: images.bnbIcon,
+       price: "$8.91B",
+       percentageChange: "-0.89",
+       trend: "down",
+       netInflow: "-0.89%",
+       color: "#0033AD",
+     },
+   ],
+   "outder perform": [
+     {
+       label: "Bitcoin",
+       icon: images.btcIcon,
+       price: "$100.86B",
+       percentageChange: "3.96",
+       trend: "up",
+       netInflow: "+3.96%",
+       color: "#F7931A",
+     },
+     {
+       label: "Ethereum",
+       icon: images.ethIcon,
+       price: "$45.72B",
+       percentageChange: "2.45",
+       trend: "up",
+       netInflow: "+2.45%",
+       color: "#627EEA",
+     },
+   ],
+   "1w": [
+     // Dữ liệu tương tự cho 1w
+   ],
+   "1m": [
+     // Dữ liệu tương tự cho 1m
+   ],
+   "1y": [
+     // Dữ liệu tương tự cho 1y
+   ],
+ };
 
 
 export const BoxPerform = () => {
-    const [activeTab, setActiveTab] = useState("24h");
+    const [activeTab, setActiveTab] = useState("under perform");
     
     const tabsData = [
-      { id: "Under perform", label: "Under perform" },
-      { id: "Out perform", label: "Out perform" },
+      { id: "under perform", label: "under perform" },
+      { id: "outder perform", label: "outder perform" },
     ];
 
     const handleChooseTab = (event) => {

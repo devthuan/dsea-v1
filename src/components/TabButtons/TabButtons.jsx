@@ -65,10 +65,10 @@ const  TabButtons = ({ tabs, activeTab, onTabClick, tabType="type1" }) => {
         {tabs.map((tab) => (
           <button
             key={tab.id}
-            className={`relative z-10 rounded-[20px] text-base w-32 h-6  transition-all ${
+            className={`relative z-10 rounded-[20px]  w-32 h-6  transition-all ${
               activeTab === tab.id
-                ? "text-white font-semibold active-tab "
-                : "hover:text-[var(--text)] text-black/80"
+                ? "text-white font-medium active-tab "
+                : " text-black"
             }`}
             onClick={() => onTabClick(tab.id)}
           >
