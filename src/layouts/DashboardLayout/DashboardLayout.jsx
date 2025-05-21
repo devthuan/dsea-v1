@@ -55,7 +55,7 @@ const menuItems = [
     id: "dashboard",
     title: "Dashboard",
     icon: LayoutDashboard,
-    url: "#",
+    url: "/",
   },
   {
     id: "Asset",
@@ -63,7 +63,7 @@ const menuItems = [
     icon: Wallet,
     url: "#",
     submenu: [
-      { id: "Top gainer", title: "Top gainer", url: "#" },
+      { id: "Top gainer", title: "Top gainer", url: "/asset" },
       { id: "Top loser", title: "Top loser", url: "#" },
       { id: "Heap map", title: "Heap map", url: "#", isActive: true },
       { id: "billing", title: "Billing", url: "#" },

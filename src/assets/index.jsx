@@ -7,7 +7,7 @@ import bnbIcon from '@/assets/icons/binance.png';
 
 
 export const images = {
-    btcIcon: btcIcon,
+    btcIcon: btcIcon,   
     ethIcon: ethIcon,
     solIcon: solIcon,
     bnbIcon: bnbIcon,

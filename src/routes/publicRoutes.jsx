@@ -1,7 +1,7 @@
 import { DashboardLayout } from "@/layouts/DashboardLayout/DashboardLayout";
 import Asset from "@/pages/Asset/Asset";
-import Candle from "@/pages/Candle/Candle";
-import  Dashboard  from "@/pages/Dashboard/Dashboard";
+import Test from "@/pages/Candle/Test";
+import Dashboard from "@/pages/Dashboard/Dashboard";
 
 export const publicRoutes = [
   {
@@ -15,8 +15,8 @@ export const publicRoutes = [
     layout: DashboardLayout,
   },
   {
-    path: "/candle",
-    component: Candle,
+    path: "/test",
+    component: Test,
     layout: DashboardLayout,
   },
 ];

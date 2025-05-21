@@ -34,7 +34,7 @@ const BoxBitcoinDominance = () => {
     <div className="w-full h-full">
       <div className="w-full h-full bg-white/70 shadow-md rounded-[32px] p-[24px] flex flex-col gap-y-[16px]">
       <div className="flex justify-between items-center">
-          <h1 className="h-auto justify-start text-black text-2xl font-semibold font-['Inter']">
+          <h1 className="h-auto justify-start text-black text-2xl font-bold">
             Bitcoin Dominance
           </h1>
           <div className=" inline-flex justify-start items-start gap-2.5">
@@ -49,11 +49,11 @@ const BoxBitcoinDominance = () => {
         <div className="w-full h-auto flex justify-between items-center">
           <div className="inline-flex justify-start items-center gap-3">
             <div className="px-4 py-1 bg-[#76e1db] rounded-[60px] flex justify-center items-center gap-2.5">
-              <div className="justify-center text-[#0c2c40] text-md font-semibold font-['Poppins']">
+              <div className="justify-center text-[#0c2c40] text-md font-bold">
                 54.86 %
               </div>
             </div>
-            <div className="justify-center text-green-500  text-md font-semibold font-['Poppins']">
+            <div className="justify-center text-green-500  text-md font-bold">
               +0.76%
             </div>
           </div>

@@ -32,17 +32,17 @@ const BoxFearGear = () => {
   return (
     <div className="w-full h-full">
       <div className="w-full h-full bg-white/70 shadow-md rounded-[32px] p-[24px] flex flex-col gap-y-[16px]">
-        <h1 className="h-auto justify-start text-black text-2xl font-semibold font-['Inter']">
+        <h1 className="h-auto justify-start text-black text-2xl font-bold">
           Fear & Gear Index
         </h1>
         <div className="w-full h-full grid grid-cols-3 gap-4">
           <div className="col-span-2  w-full h-full border-[1px] border-black rounded-[32px] p-[32px]">
             <div className="w-[156px] h-[156px] bg-[#d9d9d9] rounded-full flex justify-center items-center">
-              <div className="justify-start text-black text-[40px] font-semibold font-['Inter']">
+              <div className="justify-start text-black text-[40px] font-bold">
                 87
               </div>
             </div>
-            <h1 className="mt-[20px] justify-start text-black text-2xl font-semibold font-['Inter']">
+            <h1 className="mt-[20px] justify-start text-black text-2xl font-bold">
               Distribution of letters
             </h1>
             <p className="mt[10px] w-full justify-center text-[#8a8a8a] text-sm font-normal font-['Inter']">
@@ -54,12 +54,12 @@ const BoxFearGear = () => {
             <div className="flex gap-2">
               <div className="inline-flex justify-start items-center gap-3">
                 <div className="w-12 h-12 px-[13px] py-[15px] bg-[#d9d9d9] rounded-3xl inline-flex flex-col justify-center items-center gap-2.5">
-                  <div className="justify-start text-black text-sm font-semibold font-['Inter']">
+                  <div className="justify-start text-black text-sm font-bold">
                     87
                   </div>
                 </div>
                 <div className="w-auto inline-flex flex-col justify-start items-start gap-1">
-                  <div className="self-stretch justify-start text-black text-base font-semibold font-['Inter']">
+                  <div className="self-stretch justify-start text-black text-base font-bold">
                     Yesterday
                   </div>
                   <div className="self-stretch justify-start text-[#8a8a8a] text-[10px] font-normal font-['Inter']">

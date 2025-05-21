@@ -1,4 +1,3 @@
-
 // import BoxFearGear from "@/components/asset/BoxFearGear/BoxFearGear";
 // import BoxTableTopPerformance from "@/components/asset/BoxTableTopPerformance/BoxTableTopPerformance";
 // import BoxBitcoinDominance from "@/components/asset/BoxBitcoinDominance/BoxBitcoinDominance";
@@ -18,61 +17,56 @@ const Asset = () => {
     { name: "Page G", uv: 3490, pv: 4300, amt: 2100 },
   ];
 
-  const dataBoxItemChart  = [
+  const dataBoxItemChart = [
     {
       chartData: dataChart,
       percentage: "+25%",
-
     },
     {
       chartData: dataChart,
       percentage: "-25%",
-
     },
     {
       chartData: dataChart,
       percentage: "+25%",
-
     },
-  ]
-
+  ];
 
   return (
-    <div className={"w-full h-full "}>
-      <div className="justify-start text-black text-2xl font-semibold font-['Inter']">
+    <div className={"w-auto h-full flex flex-col gap-y-5 "}>
+      <div className="justify-start text-black text-2xl font-bold">
         Crypto Market Insights and Analytics
       </div>
-      <div className="justify-center text-[#8a8a8a] text-sm font-normal font-['Inter'] mt-[10px]">
+      <div className="justify-center text-[#8a8a8a] text-sm font-normal  mt-[-15px]">
         TOP Cryptocurrencies Price List by Market Capitalization.
       </div>
 
-      <div className="my-[30px] flex gap-2 ">
-        {dataBoxItemChart.map((item, index) => {
-          return (
-          <NavLink key={index} to={"/asset/solona"}>
-            <BoxItemChart
-              chartData={item.chartData}
-              percentage={item.percentage}
-            />
-          </NavLink>
-
-          )
-        })}
+      <div className="px-[40px] flex gap-2 ">
+        <BoxItemChart />
       </div>
 
-      <div className="mt-[30px] w-full h-full max-h-[660px] grid grid-cols-2 gap-4">
+      <div className="h-auto grid auto-rows-min gap-4 md:grid-cols-2">
+        <div className=" rounded-xl bg-muted/50">
+          <BoxBitcoinDominance />
+        </div>
+        <div className=" rounded-xl bg-muted/50">
+          <BoxFearGear />
+        </div>
+      </div>
+
+      {/* <div className="mt-[30px] w-full h-full max-h-[660px] grid grid-cols-2 gap-4">
         <div className="w-full h-full">
           <BoxBitcoinDominance />
         </div>
         <div className="">
           <BoxFearGear />
         </div>
-      </div>
+      </div> */}
 
       {/* wrap top performance top altCoin */}
-      <div className="mt-[30px] ">
+      {/* <div className="mt-[30px] ">
         <BoxTableTopPerformance />
-      </div>
+      </div> */}
     </div>
   );
 };
