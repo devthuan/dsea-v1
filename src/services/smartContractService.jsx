@@ -4,19 +4,21 @@ const httpProvider = new Web3.providers.HttpProvider(
   import.meta.env.VITE_HTTP_PROVIDER_URL
 );
 
-// const wsProvider = new Web3.providers.WebsocketProvider(
-//   import.meta.env.VITE_WEBSOCKET_PROVIDER_URL
-// );
+const wsProvider = new Web3.providers.WebsocketProvider(
+  import.meta.env.VITE_WEBSOCKET_PROVIDER_URL
+);
 
 // const rpcProvider = new Web3.providers.
 
 
-if (!httpProvider || !httpProvider) {
+if (!httpProvider || !wsProvider) {
   throw new Error("Provider URL không được cấu hình");
 }
 
 const web3Http = new Web3(httpProvider);
-const web3Ws = new Web3(httpProvider);
+const web3Ws = new Web3(wsProvider);
+
+
 
 // init cache
 const contractInstances = new Map();

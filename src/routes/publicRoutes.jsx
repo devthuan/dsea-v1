@@ -1,6 +1,6 @@
 import { DashboardLayout } from "@/layouts/DashboardLayout/DashboardLayout";
 import Asset from "@/pages/Asset/Asset";
-import Test from "@/pages/Candle/Test";
+import Test from "@/pages/Test/Test";
 import Dashboard from "@/pages/Dashboard/Dashboard";
 
 export const publicRoutes = [
