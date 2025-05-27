@@ -109,6 +109,7 @@ const BoxItemChart = ({
                       <p className="text-gray-500 text-xs font-medium">
                         {subtitle}
                       </p>
+                      Overview
                     </div>
                   </div>
                 </div>

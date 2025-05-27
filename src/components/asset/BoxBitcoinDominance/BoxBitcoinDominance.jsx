@@ -30,7 +30,7 @@ const BoxBitcoinDominance = () => {
     { id: "1m", label: "1m" },
   ];
 
-  return (
+    return (
     <div className="w-full h-full">
       <div className="w-full h-full bg-white/70 shadow-md rounded-[32px] p-[24px] flex flex-col gap-y-[16px]">
       <div className="flex justify-between items-center">

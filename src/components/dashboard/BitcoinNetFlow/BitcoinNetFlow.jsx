@@ -251,9 +251,9 @@ const BitcoinNetFlow = () => {
       "
     >
       <div className=" w-full flex items-center justify-between">
-        <h2 className="text-black font-medium text-lg">
+        <h1 className="text-black font-medium text-lg">
           Bitcoin Exchange Net Flow
-        </h2>
+        </h1>
         <div className=" w-auto ">
           <TabButtons
             tabs={tabsData}
