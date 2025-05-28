@@ -1,9 +1,38 @@
 import { useState } from "react";
-import NetFlowChart from "../../charts/NetFlowChart/NetFlowChart";
-import TabButtons from "../../TabButtons/TabButtons";
-import CustomPieChart from "../../charts/PieChart/PieChart";
-import AccumulationChart from "../../charts/LineChartReChart/AccumulationChart";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { TrendingUp, TrendingDown, Activity, BarChart3 } from "lucide-react";
+
+// Mock components - replace with your actual components
+const NetFlowChart = ({ data }) => (
+  <div className="w-full h-96 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl flex items-center justify-center border border-blue-200">
+    <div className="text-center">
+      <BarChart3 size={48} className="mx-auto mb-4 text-blue-600" />
+      <p className="text-gray-600">
+        Net Flow Chart ({data.length} data points)
+      </p>
+    </div>
+  </div>
+);
+
+const CustomPieChart = ({ width, height, outerRadius }) => (
+  <div className="relative" style={{ width, height }}>
+    <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-pink-100 rounded-xl flex items-center justify-center border border-purple-200">
+      <div className="text-center">
+        <Activity size={48} className="mx-auto mb-4 text-purple-600" />
+        <p className="text-gray-600">Whale Status Distribution</p>
+      </div>
+    </div>
+  </div>
+);
+
+const AccumulationChart = () => (
+  <div className="w-full h-96 bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl flex items-center justify-center border border-green-200">
+    <div className="text-center">
+      <TrendingUp size={48} className="mx-auto mb-4 text-green-600" />
+      <p className="text-gray-600">Whale Accumulation Trend</p>
+    </div>
+  </div>
+);
 
 const BoxTokenNetFlow = () => {
   const [activeTab, setActiveTab] = useState("netflow");
@@ -22,145 +51,207 @@ const BoxTokenNetFlow = () => {
     { name: "2024-10-01", inflow: 66000, outflow: 68000, price: 59000 },
     { name: "2024-11-01", inflow: 70000, outflow: 72000, price: 61000 },
     { name: "2024-12-01", inflow: 75000, outflow: 73000, price: 63000 },
-    { name: "2025-01-01", inflow: 32000, outflow: 28000, price: 42000 },
-    { name: "2025-02-01", inflow: 35000, outflow: 37000, price: 45000 },
-    { name: "2025-03-01", inflow: 40000, outflow: 39000, price: 47000 },
-    { name: "2025-04-01", inflow: 42000, outflow: 45000, price: 48000 },
-    { name: "2025-05-01", inflow: 46000, outflow: 43000, price: 50000 },
-    { name: "2025-06-01", inflow: 50000, outflow: 52000, price: 91000 },
-    { name: "2025-07-01", inflow: 54000, outflow: 51000, price: 83000 },
-    { name: "2025-08-01", inflow: 58000, outflow: 60000, price: 55000 },
-    { name: "2025-09-01", inflow: 62000, outflow: 59000, price: 77000 },
-    { name: "2025-10-01", inflow: 66000, outflow: 68000, price: 59000 },
-    { name: "2025-11-01", inflow: 70000, outflow: 72000, price: 61000 },
-    { name: "2025-12-01", inflow: 75000, outflow: 73000, price: 63000 },
   ];
-
-  const tabsData = [
-    { id: "netflow", label: "Net Inflow/Outflow" },
-    { id: "exchange", label: "On-chain Exchange Flow" },
-    { id: "whaleStatus", label: "Whales' status" },
-    { id: "accumulation", label: "Whale accumulation trend" },
-  ];
-
-  const dataRangeSell = [
-    { label: "Strong Sell", rank: 1 },
-    { label: "Sell", rank: 2 },
-    { label: "Neutral", rank: 3 },
-    { label: "Buy", rank: 4 },
-    { label: "Strong Buy", rank: 5 },
-  ];
-
-  const getColorByRank = (rank) => {
-    switch (rank) {
-      case 1:
-        return "bg-[#d73027]";
-      case 2:
-        return "bg-[#fc8d59]";
-      case 3:
-        return "bg-[#dddddd]";
-      case 4:
-        return "bg-[#A5D6A7]";
-      case 5:
-        return "bg-[#388E3C]";
-      default:
-        return "bg-gray-300";
-    }
-  };
 
   return (
-    <div className="w-full h-full rounded-[32px] p-[24px] bg-whi  te">
-      <div className="flex justify-between items-center mb-2">
-        <h1 className="text-black text-2xl font-semibold ">
-          Whales' Analytics
-        </h1>
-      </div>
+    <div className="w-full h-full bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+      <div className="container mx-auto p-6">
+        {/* Header */}
+        <div className="mb-8">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+              <Activity className="w-6 h-6 text-white" />
+            </div>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+              Whales' Analytics Dashboard
+            </h1>
+          </div>
+          <p className="text-gray-600 ml-13">
+            Comprehensive analysis of whale trading patterns and market
+            movements
+          </p>
+        </div>
 
-      <Tabs defaultValue="account" className="w-full ">
-        <TabsList className={"mb-[30px] "}>
-          <TabsTrigger className={"p-4"} value="netflow">
-            Net inflow/outflow
-          </TabsTrigger>
-          <TabsTrigger className={"p-4"} value="onchain">
-            On-chain exchange flow
-          </TabsTrigger>
-          <TabsTrigger className={"p-4"} value="whaleStatus">
-            Whale's whaleStatus
-          </TabsTrigger>
-          <TabsTrigger className={"p-4"} value="accumulation">
-            Whale accumulation trend
-          </TabsTrigger>
-        </TabsList>
-        <TabsContent value="netflow">
-          <NetFlowChart data={btcData} />
-        </TabsContent>
-        <TabsContent value="onchain">
-          <NetFlowChart data={btcData} />
-        </TabsContent>
-        <TabsContent value="whaleStatus">
-          <WhaleStatusTab
-            activeTab={activeTabPieChart}
-            onTabChange={setActiveTabPieChart}
-          />
-        </TabsContent>
-        <TabsContent value="accumulation">
-          <AccumulationChart />
-        </TabsContent>
-      </Tabs>
+        {/* Main Content */}
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6">
+          <Tabs defaultValue="netflow" className="w-full ">
+            <TabsList className="h-auto grid w-full grid-cols-4 mb-2 bg-gray-100/50 p-1 rounded-xl">
+              <TabsTrigger
+                value="netflow"
+                className="px-4 py-3 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-200"
+              >
+                <div className="flex items-center gap-2">
+                  <TrendingUp className="w-4 h-4" />
+                  <span className="hidden sm:inline">Net Flow</span>
+                </div>
+              </TabsTrigger>
+              <TabsTrigger
+                value="onchain"
+                className="px-4 py-3 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-200"
+              >
+                <div className="flex items-center gap-2">
+                  <BarChart3 className="w-4 h-4" />
+                  <span className="hidden sm:inline">Exchange Flow</span>
+                </div>
+              </TabsTrigger>
+              <TabsTrigger
+                value="whaleStatus"
+                className="px-4 py-3 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-200"
+              >
+                <div className="flex items-center gap-2">
+                  <Activity className="w-4 h-4" />
+                  <span className="hidden sm:inline">Whale Status</span>
+                </div>
+              </TabsTrigger>
+              <TabsTrigger
+                value="accumulation"
+                className="px-4 py-3 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-200"
+              >
+                <div className="flex items-center gap-2">
+                  <TrendingUp className="w-4 h-4" />
+                  <span className="hidden sm:inline">Accumulation</span>
+                </div>
+              </TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="netflow" className="space-y-6">
+              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
+                <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                  <TrendingUp className="w-5 h-5 text-blue-600" />
+                  Net Inflow/Outflow Analysis
+                </h3>
+                <NetFlowChart data={btcData} />
+              </div>
+            </TabsContent>
+
+            <TabsContent value="onchain" className="space-y-6">
+              <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-100">
+                <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                  <BarChart3 className="w-5 h-5 text-purple-600" />
+                  On-chain Exchange Flow
+                </h3>
+                <NetFlowChart data={btcData} />
+              </div>
+            </TabsContent>
+
+            <TabsContent value="whaleStatus" className="space-y-6">
+              <WhaleStatusTab
+                activeTab={activeTabPieChart}
+                onTabChange={setActiveTabPieChart}
+              />
+            </TabsContent>
+
+            <TabsContent value="accumulation" className="space-y-6">
+              <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-6 border border-green-100">
+                <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                  <TrendingUp className="w-5 h-5 text-green-600" />
+                  Whale Accumulation Trend
+                </h3>
+                <AccumulationChart />
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </div>
     </div>
   );
 };
 
 const WhaleStatusTab = ({ activeTab, onTabChange }) => {
-  const tabsDataPieChart = [
-    { id: "24h", label: "24h" },
-    { id: "7day", label: "7 day" },
-    { id: "14day", label: "14 day" },
+  const [selectedPeriod, setSelectedPeriod] = useState("24h");
+
+  const periods = [
+    { id: "24h", label: "24 Hours", color: "blue" },
+    { id: "7day", label: "7 Days", color: "purple" },
+    { id: "14day", label: "14 Days", color: "green" },
   ];
 
+  const stats = {
+    "24h": { loss: 8, profit: 12 },
+    "7day": { loss: 15, profit: 25 },
+    "14day": { loss: 22, profit: 38 },
+  };
+
   return (
-    <div className="grid grid-cols-3 justify-between">
-      <div className="col-span-2 flex justify-center items-center">
-        <CustomPieChart width={800} height={600} outerRadius={150} />
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {/* Chart Section */}
+      <div className="lg:col-span-2">
+        <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-100 h-full flex items-center justify-center">
+          <CustomPieChart width={600} height={400} outerRadius={120} />
+        </div>
       </div>
 
-      <div className="w-[404px] h-[595px] relative overflow-hidden">
-        <div className="absolute left-0 top-[3px] w-[402px] h-[592px] bg-[#d9d9d9]/40 rounded-[20px]" />
-
-        <div className="absolute left-[32px] top-[35px] inline-flex justify-start items-center gap-2">
-          {/* <TabButtons
-            tabs={tabsDataPieChart}
-            activeTab={activeTab}
-            onTabClick={onTabChange}
-            tabType="type2"
-          /> */}
-        </div>
-
-        <div className="absolute left-[32px] top-[105px] flex flex-col gap-10">
-          <div className="flex flex-col gap-3">
-            <div className="text-black text-2xl font-normal font-['Poppins'] leading-[48px]">
-              Whales sold at a loss
-            </div>
-            <div className="text-black text-[64px] font-semibold font-['Poppins'] leading-[48px]">
-              8%
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-3">
-            <div className="text-black text-2xl font-normal font-['Poppins'] leading-[48px]">
-              Whales sold at a profit
-            </div>
-            <div className="text-black text-[64px] font-semibold font-['Poppins'] leading-[48px]">
-              12%
-            </div>
+      {/* Stats Section */}
+      <div className="space-y-6">
+        {/* Time Period Selector */}
+        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+          <div className="flex gap-2">
+            {periods.map((period) => (
+              <button
+                key={period.id}
+                onClick={() => setSelectedPeriod(period.id)}
+                className={`w-full p-3 rounded-lg text-center transition-all duration-200 ${
+                  selectedPeriod === period.id
+                    ? `bg-${period.color}-100 border-${period.color}-300 text-${period.color}-800 border-2`
+                    : "bg-gray-50 hover:bg-gray-100 border border-gray-200"
+                }`}
+              >
+                <span className="font-medium text-base">{period.label}</span>
+              </button>
+            ))}
           </div>
         </div>
 
-        <div className="absolute left-[32px] top-[401px] w-[338px] h-0 outline outline-offset-[-1px] outline-[#4d4d4d]" />
+        {/* Whale Activity Stats */}
+        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 space-y-6">
+          <h4 className="text-lg font-semibold text-gray-800">
+            Whale Activity
+          </h4>
 
-        <div className="absolute left-[32px] top-[417px] w-[338px] text-black text-xs font-normal font-['Poppins']">
-          Whales have sold at a loss or gained a profit over 24 hours, 7 days,
-          and 14 days. This shows the activities of all whales at the moment.
+          {/* Loss Stats */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <TrendingDown className="w-5 h-5 text-red-500" />
+              <span className="text-gray-700 font-medium">
+                Whales sold at a loss
+              </span>
+            </div>
+            <div className="flex items-baseline gap-2">
+              <span className="text-4xl font-bold text-red-600">
+                {stats[selectedPeriod].loss}%
+              </span>
+              <span className="text-sm text-gray-500">of total volume</span>
+            </div>
+          </div>
+
+          <div className="h-px bg-gray-200"></div>
+
+          {/* Profit Stats */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <TrendingUp className="w-5 h-5 text-green-500" />
+              <span className="text-gray-700 font-medium">
+                Whales sold at a profit
+              </span>
+            </div>
+            <div className="flex items-baseline gap-2">
+              <span className="text-4xl font-bold text-green-600">
+                {stats[selectedPeriod].profit}%
+              </span>
+              <span className="text-sm text-gray-500">of total volume</span>
+            </div>
+          </div>
+
+          <div className="h-px bg-gray-200"></div>
+
+          {/* Description */}
+          <div className="bg-blue-50 rounded-lg p-4 border border-blue-100">
+            <p className="text-sm text-blue-700 leading-relaxed">
+              <strong>Analysis:</strong> Whales have sold at a loss or gained a
+              profit over the selected timeframe. This shows the current
+              activities and sentiment of all whale traders in the market.
+            </p>
+          </div>
         </div>
       </div>
     </div>

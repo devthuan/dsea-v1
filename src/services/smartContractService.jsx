@@ -10,15 +10,12 @@ const wsProvider = new Web3.providers.WebsocketProvider(
 
 // const rpcProvider = new Web3.providers.
 
-
-if (!httpProvider || !wsProvider) {
+if (!httpProvider || !wsProvider) { 
   throw new Error("Provider URL không được cấu hình");
 }
 
 const web3Http = new Web3(httpProvider);
 const web3Ws = new Web3(wsProvider);
-
-
 
 // init cache
 const contractInstances = new Map();
@@ -34,7 +31,6 @@ export const getContractInstance = (nameContractJson, useHttp = false) => {
   }
 
   const { address, abi } = contractData;
-
 
   if (!Array.isArray(abi)) {
     console.error(`ABI của contract ${name} không hợp lệ.`);
@@ -59,7 +55,6 @@ export const fetchDataSmartContract = async (
   }
   try {
     return await contract.methods[methodName](...args).call();
-  
   } catch (err) {
     console.error(`Lỗi khi gọi ${methodName}:`, err);
     return null;
@@ -84,9 +79,7 @@ export const listenToEventSmartContract = async (
   try {
     const subscription = contract.events[eventName]();
 
-
     subscription.on("connected", () => {
-
       // Chỉ lắng nghe dữ liệu sau khi kết nối thành công
       subscription.on("data", callback);
     });
@@ -97,10 +90,7 @@ export const listenToEventSmartContract = async (
   } catch (error) {
     console.error(`Lỗi khi đăng ký sự kiện ${eventName}:`, error);
   }
-
-
 };
-
 
 // multiple
 export const listenToMultipleEvents = (contractName, eventNames, callback) => {

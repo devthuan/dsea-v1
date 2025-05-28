@@ -9,7 +9,7 @@ import candleStrick from "@/contracts/candleStrick.json";
 // Hàm lấy địa chỉ proxy từ MasterFactory
 export const getProxyAddress = async (symbol, interval, timeKey) => {
   let masterFactoryData = candleStrick["MasterFactory"];
-  console.log(masterFactoryData)
+  console.log(masterFactoryData);
   if (!masterFactoryData || !masterFactoryData.address) {
     throw new Error("Không thể tìm thấy MasterFactory trong candleStrick.json");
   }
@@ -24,7 +24,7 @@ export const getProxyAddress = async (symbol, interval, timeKey) => {
     if (!proxyAddress) {
       throw new Error("Không thể lấy địa chỉ proxy từ MasterFactory");
     }
-    console.log("check address proxy: ", proxyAddress)
+    console.log("check address proxy: ", proxyAddress);
     return proxyAddress;
   } catch (error) {
     console.error("Error fetching proxy address:", error);
@@ -32,14 +32,14 @@ export const getProxyAddress = async (symbol, interval, timeKey) => {
   }
 };
 
-
 export const candleStrickService = {
- 
   fetchData: async () => {
     let now = new Date();
     const startTime = now.getTime();
     const endTime = now.getTime() - 10 * 24 * 60 * 60 * 1000;
-    const ddmmyyyy = new Date(startTime).toLocaleDateString("en-GB").replace(/\//g, "_"); // dd_mm_yyyy now
+    const ddmmyyyy = new Date(startTime)
+      .toLocaleDateString("en-GB")
+      .replace(/\//g, "_"); // dd_mm_yyyy now
     console.log(ddmmyyyy);
     console.log("startTime", startTime);
     console.log("endTime", endTime);
@@ -47,25 +47,21 @@ export const candleStrickService = {
     const symbol = "BTCUSDT";
     const interval = "1m";
     const timeKey = ddmmyyyy; // Thay đổi theo ngày bạn muốn lấy dữ liệu
-    const proxyAddress = await getProxyAddress(
-      symbol,
-      interval,
-      timeKey
-    );
+    const proxyAddress = await getProxyAddress(symbol, interval, timeKey);
 
     const contractData = {
       address: proxyAddress,
       abi: candleStrick["CandleStorageLogic"].abi,
     };
 
-    console.log("check address proxy: ", contractData)
+    console.log("check address proxy: ", contractData);
 
     let result = await fetchDataSmartContract(
       contractData,
       "getCandleByAmountAndTime",
       // endTime,
       startTime,
-      200
+      500
     );
 
     if (!result) {
@@ -73,10 +69,11 @@ export const candleStrickService = {
       return [];
     }
 
-    console.log("check data from service:", result.length);
+    console.log("check data from service:", result);
+    console.log("check data from service length:", result.length);
     const formattedData = result.map((item) => {
       return {
-        time: Number(item.openTime) / 1000,
+        time: Number(item.openTime),
         openTime: Number(item.openTime),
         closeTime: Number(item.closeTime),
         open: Number(toUnits(item.open, 8)), // Chuyển chuỗi thành số
@@ -92,7 +89,7 @@ export const candleStrickService = {
       };
     });
 
-    formattedData.sort((a, b) => a.openTime - b.openTime);
+    formattedData.sort((a, b) => a.time - b.time);
     console.log("Formatted data:", formattedData);
     return formattedData;
   },
@@ -100,6 +97,7 @@ export const candleStrickService = {
   fetchDataOld: async (startTime) => {
     // let now = new Date();
     const endTime = startTime - 10 * 24 * 60 * 60 * 1000;
+    //get time ago 10 hours from startTime
 
     console.log("startTime", startTime);
     console.log("endTime", endTime);
@@ -107,7 +105,9 @@ export const candleStrickService = {
     // let now = new Date();
     // const startTime = now.getTime();
     // const endTime = now.getTime() - 10 * 24 * 60 * 60 * 1000;
-    const ddmmyyyy = new Date(startTime).toLocaleDateString("en-GB").replace(/\//g, "_"); // dd_mm_yyyy now
+    const ddmmyyyy = new Date(startTime)
+      .toLocaleDateString("en-GB")
+      .replace(/\//g, "_"); // dd_mm_yyyy now
 
     const symbol = "BTCUSDT";
     const interval = "1m";
@@ -121,9 +121,10 @@ export const candleStrickService = {
 
     let result = await fetchDataSmartContract(
       contractData,
-      "getCandlesByArrayTime",
-      endTime,
-      startTime
+      "getCandleByAmountAndTime",
+      // endTime,
+      startTime,
+      100
     );
 
     if (!result) {

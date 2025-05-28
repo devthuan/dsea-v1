@@ -4,10 +4,9 @@ import {
   CandlestickSeries,
   HistogramSeries,
 } from "lightweight-charts";
-import axios from "axios";
-import { candleStrickService } from "@/services/candleStrick/candleStrickService";
+import { candleStrickServiceNhat } from "@/services/candleStrick/candleStrickServiceNhat";
 
-const CandlestickVolume = ({ data }) => {
+const CandlestickNhat = ({ data }) => {
   const candleSeriesRef = useRef(null);
   const histogramSeriesRef = useRef(null);
   const socketRef = useRef(null);
@@ -110,7 +109,7 @@ const CandlestickVolume = ({ data }) => {
         // Giả sử bạn có thể lấy thời gian đầu tiên hiện có để làm mốc load dữ liệu cũ
         const visibleTimeRange = chart.timeScale().getVisibleRange();
         if (!visibleTimeRange) return;
-        console.log("Visible time range:", visibleTimeRange);
+
         const startTime = visibleTimeRange.from; // dạng Date hoặc timestamp
         const startTimestampMs =
           typeof startTime === "number"
@@ -119,7 +118,7 @@ const CandlestickVolume = ({ data }) => {
 
         const fetchData = async () => {
           try {
-            const result = await candleStrickService.fetchDataOld(
+            const result = await candleStrickServiceNhat.fetchDataOld(
               startTimestampMs
             );
             console.log("Fetched result >>>:", result);
@@ -293,7 +292,7 @@ const CandlestickVolume = ({ data }) => {
   // real-time smart contract updates
   useEffect(() => {
     const listData = async () => {
-      await candleStrickService.listeningEvent({
+      await candleStrickServiceNhat.listeningEvent({
         callback: (newData) => {
           console.log(newData);
           const newCandle = {
@@ -311,16 +310,7 @@ const CandlestickVolume = ({ data }) => {
           ) {
             // tạo nến mới
             if (lastCandleRef.current && newData.isClosed) {
-              // setDataCandle((prev) => [...prev, lastCandleRef.current]);
-              setDataCandle((prev) => {
-                if (
-                  prev.length > 0 &&
-                  prev[prev.length - 1].time === lastCandleRef.current.time
-                ) {
-                  return prev; // tránh thêm dữ liệu trùng time
-                }
-                return [...prev, lastCandleRef.current];
-              });
+              setDataCandle((prev) => [...prev, lastCandleRef.current]);
             }
             lastCandleRef.current = newCandle;
           } else {
@@ -436,4 +426,4 @@ const CandlestickVolume = ({ data }) => {
   );
 };
 
-export default CandlestickVolume;
+export default CandlestickNhat;

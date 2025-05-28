@@ -4,10 +4,9 @@ import {
   CandlestickSeries,
   HistogramSeries,
 } from "lightweight-charts";
-import axios from "axios";
-import { candleStrickService } from "@/services/candleStrick/candleStrickService";
+import { candleStrickServiceHoang } from "@/services/candleStrick/candleStrickServiceHoang";
 
-const CandlestickVolume = ({ data }) => {
+const CandlestickHoang = ({ data }) => {
   const candleSeriesRef = useRef(null);
   const histogramSeriesRef = useRef(null);
   const socketRef = useRef(null);
@@ -110,22 +109,22 @@ const CandlestickVolume = ({ data }) => {
         // Giả sử bạn có thể lấy thời gian đầu tiên hiện có để làm mốc load dữ liệu cũ
         const visibleTimeRange = chart.timeScale().getVisibleRange();
         if (!visibleTimeRange) return;
-        console.log("Visible time range:", visibleTimeRange);
+
         const startTime = visibleTimeRange.from; // dạng Date hoặc timestamp
         const startTimestampMs =
           typeof startTime === "number"
             ? startTime * 1000
             : new Date(startTime).getTime();
-
+        console.log("Start timestamp for fetching data:", startTimestampMs);
         const fetchData = async () => {
           try {
-            const result = await candleStrickService.fetchDataOld(
+            const result = await candleStrickServiceHoang.fetchDataOld(
               startTimestampMs
             );
             console.log("Fetched result >>>:", result);
             const formattedData = result.map((item) => {
               return {
-                time: item.openTime / 1000, // chuyển sang giây
+                time: item.openTime, // chuyển sang giây
                 open: parseFloat(item.open),
                 high: parseFloat(item.high),
                 low: parseFloat(item.low),
@@ -154,7 +153,7 @@ const CandlestickVolume = ({ data }) => {
           }
         };
 
-        fetchData();
+        // fetchData();
 
         console.log("Đang load thêm dữ liệu lịch sử...");
       }
@@ -200,7 +199,7 @@ const CandlestickVolume = ({ data }) => {
     const fetchData = async () => {
       try {
         const candles = data.map((item) => ({
-          time: item.openTime / 1000, // chuyển sang giây
+          time: item.openTime, // chuyển sang giây
           open: parseFloat(item.open),
           high: parseFloat(item.high),
           low: parseFloat(item.low),
@@ -289,15 +288,16 @@ const CandlestickVolume = ({ data }) => {
   //     }
   //   };
   // }, []);
+  //
 
   // real-time smart contract updates
   useEffect(() => {
     const listData = async () => {
-      await candleStrickService.listeningEvent({
+      await candleStrickServiceHoang.listeningEvent({
         callback: (newData) => {
           console.log(newData);
           const newCandle = {
-            time: newData.openTime / 1000, // chuyển sang giây
+            time: newData.openTime, // chuyển sang giây
             open: parseFloat(newData.open),
             high: parseFloat(newData.high),
             low: parseFloat(newData.low),
@@ -436,4 +436,4 @@ const CandlestickVolume = ({ data }) => {
   );
 };
 
-export default CandlestickVolume;
+export default CandlestickHoang;
