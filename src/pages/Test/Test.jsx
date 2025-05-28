@@ -1,6 +1,6 @@
 import CandlestickVolume from "@/components/charts/CandlestickVolume/CandlestickVolume";
 import ChartWithDrawingTools from "@/components/charts/CandlestickVolume/ChartWithDrawingToolbar";
-import { candleStrickService } from "@/services/candleStrick/candleStrickService";
+import { candleStrickService, getProxyAddress } from "@/services/candleStrick/candleStrickService";
 // import ChartWithDrawingToolbar from "@/components/charts/CandlestickVolume/ChartWithDrawingToolbar";
 
 import React, { useRef, useEffect, useState } from "react";
@@ -20,7 +20,11 @@ import React, { useRef, useEffect, useState } from "react";
     };
 
     fetchData();
+    fetchData();
+    fetchData();
+    fetchData();
   }, []);
+
 
   // Log the current state to verify updates (this will show previous state until next render)
   useEffect(() => {

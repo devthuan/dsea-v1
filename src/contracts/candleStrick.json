@@ -1,753 +1,1121 @@
 {
-    "TestSMC": {
-        "address": "0xB270A1Bc143CC8429a87f862accdb9A68381FE84",
-        "abi": [
+  "MasterFactory": {
+    "address": "0x37B07784E5f53732cf52258d7386B3eF14495436",
+    "abi": [
+      {
+        "inputs": [],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
           {
-            "anonymous": false,
-            "inputs": [
-              {
-                "indexed": false,
-                "internalType": "uint64",
-                "name": "openTime",
-                "type": "uint64"
-              },
-              {
-                "indexed": false,
-                "internalType": "uint64",
-                "name": "closeTime",
-                "type": "uint64"
-              },
-              {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "open",
-                "type": "uint256"
-              },
-              {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "high",
-                "type": "uint256"
-              },
-              {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "low",
-                "type": "uint256"
-              },
-              {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "close",
-                "type": "uint256"
-              },
-              {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "volume",
-                "type": "uint256"
-              },
-              {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "quoteVolume",
-                "type": "uint256"
-              },
-              {
-                "indexed": false,
-                "internalType": "uint64",
-                "name": "firstTradeID",
-                "type": "uint64"
-              },
-              {
-                "indexed": false,
-                "internalType": "uint64",
-                "name": "lastTradeID",
-                "type": "uint64"
-              },
-              {
-                "indexed": false,
-                "internalType": "uint32",
-                "name": "tradeCount",
-                "type": "uint32"
-              },
-              {
-                "indexed": false,
-                "internalType": "bool",
-                "name": "isClosed",
-                "type": "bool"
-              }
-            ],
-            "name": "CandleUpdated",
-            "type": "event"
+            "indexed": false,
+            "internalType": "string",
+            "name": "interval",
+            "type": "string"
           },
           {
-            "inputs": [],
-            "name": "PRECISION",
-            "outputs": [
-              {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-              }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-          },
-          {
-            "inputs": [
-              {
-                "components": [
-                  {
-                    "internalType": "uint64",
-                    "name": "openTime",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint64",
-                    "name": "closeTime",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "open",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "high",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "low",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "close",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "volume",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "quoteVolume",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint64",
-                    "name": "firstTradeID",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint64",
-                    "name": "lastTradeID",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint32",
-                    "name": "tradeCount",
-                    "type": "uint32"
-                  },
-                  {
-                    "internalType": "bool",
-                    "name": "isClosed",
-                    "type": "bool"
-                  }
-                ],
-                "internalType": "struct CandleStorage.Candle",
-                "name": "candle",
-                "type": "tuple"
-              }
-            ],
-            "name": "addCandle",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-          },
-          {
-            "inputs": [
-              {
-                "components": [
-                  {
-                    "internalType": "uint64",
-                    "name": "openTime",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint64",
-                    "name": "closeTime",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "open",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "high",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "low",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "close",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "volume",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "quoteVolume",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint64",
-                    "name": "firstTradeID",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint64",
-                    "name": "lastTradeID",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint32",
-                    "name": "tradeCount",
-                    "type": "uint32"
-                  },
-                  {
-                    "internalType": "bool",
-                    "name": "isClosed",
-                    "type": "bool"
-                  }
-                ],
-                "internalType": "struct CandleStorage.Candle[]",
-                "name": "candleBatch",
-                "type": "tuple[]"
-              }
-            ],
-            "name": "addCandles",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-          },
-          {
-            "inputs": [
-              {
-                "internalType": "uint64",
-                "name": "",
-                "type": "uint64"
-              }
-            ],
-            "name": "candles",
-            "outputs": [
-              {
-                "internalType": "uint64",
-                "name": "openTime",
-                "type": "uint64"
-              },
-              {
-                "internalType": "uint64",
-                "name": "closeTime",
-                "type": "uint64"
-              },
-              {
-                "internalType": "uint256",
-                "name": "open",
-                "type": "uint256"
-              },
-              {
-                "internalType": "uint256",
-                "name": "high",
-                "type": "uint256"
-              },
-              {
-                "internalType": "uint256",
-                "name": "low",
-                "type": "uint256"
-              },
-              {
-                "internalType": "uint256",
-                "name": "close",
-                "type": "uint256"
-              },
-              {
-                "internalType": "uint256",
-                "name": "volume",
-                "type": "uint256"
-              },
-              {
-                "internalType": "uint256",
-                "name": "quoteVolume",
-                "type": "uint256"
-              },
-              {
-                "internalType": "uint64",
-                "name": "firstTradeID",
-                "type": "uint64"
-              },
-              {
-                "internalType": "uint64",
-                "name": "lastTradeID",
-                "type": "uint64"
-              },
-              {
-                "internalType": "uint32",
-                "name": "tradeCount",
-                "type": "uint32"
-              },
-              {
-                "internalType": "bool",
-                "name": "isClosed",
-                "type": "bool"
-              }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-          },
-          {
-            "inputs": [],
-            "name": "currentCandle",
-            "outputs": [
-              {
-                "internalType": "uint64",
-                "name": "openTime",
-                "type": "uint64"
-              },
-              {
-                "internalType": "uint64",
-                "name": "closeTime",
-                "type": "uint64"
-              },
-              {
-                "internalType": "uint256",
-                "name": "open",
-                "type": "uint256"
-              },
-              {
-                "internalType": "uint256",
-                "name": "high",
-                "type": "uint256"
-              },
-              {
-                "internalType": "uint256",
-                "name": "low",
-                "type": "uint256"
-              },
-              {
-                "internalType": "uint256",
-                "name": "close",
-                "type": "uint256"
-              },
-              {
-                "internalType": "uint256",
-                "name": "volume",
-                "type": "uint256"
-              },
-              {
-                "internalType": "uint256",
-                "name": "quoteVolume",
-                "type": "uint256"
-              },
-              {
-                "internalType": "uint64",
-                "name": "firstTradeID",
-                "type": "uint64"
-              },
-              {
-                "internalType": "uint64",
-                "name": "lastTradeID",
-                "type": "uint64"
-              },
-              {
-                "internalType": "uint32",
-                "name": "tradeCount",
-                "type": "uint32"
-              },
-              {
-                "internalType": "bool",
-                "name": "isClosed",
-                "type": "bool"
-              }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-          },
-          {
-            "inputs": [
-              {
-                "internalType": "uint64",
-                "name": "timestamp",
-                "type": "uint64"
-              }
-            ],
-            "name": "getCandle",
-            "outputs": [
-              {
-                "components": [
-                  {
-                    "internalType": "uint64",
-                    "name": "openTime",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint64",
-                    "name": "closeTime",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "open",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "high",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "low",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "close",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "volume",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "quoteVolume",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint64",
-                    "name": "firstTradeID",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint64",
-                    "name": "lastTradeID",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint32",
-                    "name": "tradeCount",
-                    "type": "uint32"
-                  },
-                  {
-                    "internalType": "bool",
-                    "name": "isClosed",
-                    "type": "bool"
-                  }
-                ],
-                "internalType": "struct CandleStorage.Candle",
-                "name": "",
-                "type": "tuple"
-              }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-          },
-          {
-            "inputs": [
-              {
-                "internalType": "uint256",
-                "name": "_startTime",
-                "type": "uint256"
-              },
-              {
-                "internalType": "uint256",
-                "name": "_amountOfCandle",
-                "type": "uint256"
-              }
-            ],
-            "name": "getCandleByAmountAndTime",
-            "outputs": [
-              {
-                "components": [
-                  {
-                    "internalType": "uint64",
-                    "name": "openTime",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint64",
-                    "name": "closeTime",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "open",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "high",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "low",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "close",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "volume",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "quoteVolume",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint64",
-                    "name": "firstTradeID",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint64",
-                    "name": "lastTradeID",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint32",
-                    "name": "tradeCount",
-                    "type": "uint32"
-                  },
-                  {
-                    "internalType": "bool",
-                    "name": "isClosed",
-                    "type": "bool"
-                  }
-                ],
-                "internalType": "struct CandleStorage.Candle[]",
-                "name": "",
-                "type": "tuple[]"
-              }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-          },
-          {
-            "inputs": [
-              {
-                "internalType": "uint64",
-                "name": "startTime",
-                "type": "uint64"
-              },
-              {
-                "internalType": "uint64",
-                "name": "endTime",
-                "type": "uint64"
-              }
-            ],
-            "name": "getCandlesByArrayTime",
-            "outputs": [
-              {
-                "components": [
-                  {
-                    "internalType": "uint64",
-                    "name": "openTime",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint64",
-                    "name": "closeTime",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "open",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "high",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "low",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "close",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "volume",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "quoteVolume",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint64",
-                    "name": "firstTradeID",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint64",
-                    "name": "lastTradeID",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint32",
-                    "name": "tradeCount",
-                    "type": "uint32"
-                  },
-                  {
-                    "internalType": "bool",
-                    "name": "isClosed",
-                    "type": "bool"
-                  }
-                ],
-                "internalType": "struct CandleStorage.Candle[]",
-                "name": "",
-                "type": "tuple[]"
-              }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-          },
-          {
-            "inputs": [],
-            "name": "getCurrentCandle",
-            "outputs": [
-              {
-                "components": [
-                  {
-                    "internalType": "uint64",
-                    "name": "openTime",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint64",
-                    "name": "closeTime",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "open",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "high",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "low",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "close",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "volume",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "quoteVolume",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint64",
-                    "name": "firstTradeID",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint64",
-                    "name": "lastTradeID",
-                    "type": "uint64"
-                  },
-                  {
-                    "internalType": "uint32",
-                    "name": "tradeCount",
-                    "type": "uint32"
-                  },
-                  {
-                    "internalType": "bool",
-                    "name": "isClosed",
-                    "type": "bool"
-                  }
-                ],
-                "internalType": "struct CandleStorage.Candle",
-                "name": "",
-                "type": "tuple"
-              }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-          },
-          {
-            "inputs": [],
-            "name": "getLength",
-            "outputs": [
-              {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-              }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-          },
-          {
-            "inputs": [
-              {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-              }
-            ],
-            "name": "timestamps",
-            "outputs": [
-              {
-                "internalType": "uint64",
-                "name": "",
-                "type": "uint64"
-              }
-            ],
-            "stateMutability": "view",
-            "type": "function"
+            "indexed": false,
+            "internalType": "address",
+            "name": "factoryAddress",
+            "type": "address"
           }
-        ]
-    }
-
-    
+        ],
+        "name": "IntervalFactoryCreated",
+        "type": "event"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "symbol",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "interval",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "timeKey",
+            "type": "string"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint64",
+                "name": "openTime",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "closeTime",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint256",
+                "name": "open",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "high",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "low",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "close",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "volume",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "quoteVolume",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint64",
+                "name": "firstTradeID",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "lastTradeID",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint32",
+                "name": "tradeCount",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bool",
+                "name": "isClosed",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct ICandleStorage.Candle[]",
+            "name": "candleBatch",
+            "type": "tuple[]"
+          }
+        ],
+        "name": "addCandles",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "interval",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "factoryAddress",
+            "type": "address"
+          }
+        ],
+        "name": "addFactory",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "symbol",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "interval",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "timeKey",
+            "type": "string"
+          }
+        ],
+        "name": "getCandleContract",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "interval",
+            "type": "string"
+          }
+        ],
+        "name": "getFactoryForInterval",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "name": "intervalFactories",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      }
+    ]
+  },
+  "CandleStorageLogic": {
+    "abi": [
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "target",
+            "type": "address"
+          }
+        ],
+        "name": "AddressEmptyCode",
+        "type": "error"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "implementation",
+            "type": "address"
+          }
+        ],
+        "name": "ERC1967InvalidImplementation",
+        "type": "error"
+      },
+      {
+        "inputs": [],
+        "name": "ERC1967NonPayable",
+        "type": "error"
+      },
+      {
+        "inputs": [],
+        "name": "FailedCall",
+        "type": "error"
+      },
+      {
+        "inputs": [],
+        "name": "InvalidInitialization",
+        "type": "error"
+      },
+      {
+        "inputs": [],
+        "name": "NotInitializing",
+        "type": "error"
+      },
+      {
+        "inputs": [],
+        "name": "UUPSUnauthorizedCallContext",
+        "type": "error"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "bytes32",
+            "name": "slot",
+            "type": "bytes32"
+          }
+        ],
+        "name": "UUPSUnsupportedProxiableUUID",
+        "type": "error"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "uint64",
+            "name": "openTime",
+            "type": "uint64"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint64",
+            "name": "closeTime",
+            "type": "uint64"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "open",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "high",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "low",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "close",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "volume",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "quoteVolume",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint64",
+            "name": "firstTradeID",
+            "type": "uint64"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint64",
+            "name": "lastTradeID",
+            "type": "uint64"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint32",
+            "name": "tradeCount",
+            "type": "uint32"
+          },
+          {
+            "indexed": false,
+            "internalType": "bool",
+            "name": "isClosed",
+            "type": "bool"
+          }
+        ],
+        "name": "CandleUpdated",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "uint64",
+            "name": "version",
+            "type": "uint64"
+          }
+        ],
+        "name": "Initialized",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "implementation",
+            "type": "address"
+          }
+        ],
+        "name": "Upgraded",
+        "type": "event"
+      },
+      {
+        "inputs": [],
+        "name": "PRECISION",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "UPGRADE_INTERFACE_VERSION",
+        "outputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint64",
+                "name": "openTime",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "closeTime",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint256",
+                "name": "open",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "high",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "low",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "close",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "volume",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "quoteVolume",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint64",
+                "name": "firstTradeID",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "lastTradeID",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint32",
+                "name": "tradeCount",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bool",
+                "name": "isClosed",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct ICandleStorage.Candle",
+            "name": "candle",
+            "type": "tuple"
+          }
+        ],
+        "name": "addCandle",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint64",
+                "name": "openTime",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "closeTime",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint256",
+                "name": "open",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "high",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "low",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "close",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "volume",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "quoteVolume",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint64",
+                "name": "firstTradeID",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "lastTradeID",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint32",
+                "name": "tradeCount",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bool",
+                "name": "isClosed",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct ICandleStorage.Candle[]",
+            "name": "candleBatch",
+            "type": "tuple[]"
+          }
+        ],
+        "name": "addCandles",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint64",
+            "name": "",
+            "type": "uint64"
+          }
+        ],
+        "name": "candles",
+        "outputs": [
+          {
+            "internalType": "uint64",
+            "name": "openTime",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "closeTime",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint256",
+            "name": "open",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "high",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "low",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "close",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "volume",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "quoteVolume",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint64",
+            "name": "firstTradeID",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "lastTradeID",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint32",
+            "name": "tradeCount",
+            "type": "uint32"
+          },
+          {
+            "internalType": "bool",
+            "name": "isClosed",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "currentCandle",
+        "outputs": [
+          {
+            "internalType": "uint64",
+            "name": "openTime",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "closeTime",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint256",
+            "name": "open",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "high",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "low",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "close",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "volume",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "quoteVolume",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint64",
+            "name": "firstTradeID",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "lastTradeID",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint32",
+            "name": "tradeCount",
+            "type": "uint32"
+          },
+          {
+            "internalType": "bool",
+            "name": "isClosed",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "factory",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint64",
+            "name": "timestamp",
+            "type": "uint64"
+          }
+        ],
+        "name": "getCandle",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint64",
+                "name": "openTime",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "closeTime",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint256",
+                "name": "open",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "high",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "low",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "close",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "volume",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "quoteVolume",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint64",
+                "name": "firstTradeID",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "lastTradeID",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint32",
+                "name": "tradeCount",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bool",
+                "name": "isClosed",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct ICandleStorage.Candle",
+            "name": "",
+            "type": "tuple"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "_startTime",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_amountOfCandle",
+            "type": "uint256"
+          }
+        ],
+        "name": "getCandleByAmountAndTime",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint64",
+                "name": "openTime",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "closeTime",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint256",
+                "name": "open",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "high",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "low",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "close",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "volume",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "quoteVolume",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint64",
+                "name": "firstTradeID",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "lastTradeID",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint32",
+                "name": "tradeCount",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bool",
+                "name": "isClosed",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct ICandleStorage.Candle[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint64",
+            "name": "startTime",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint64",
+            "name": "endTime",
+            "type": "uint64"
+          }
+        ],
+        "name": "getCandlesByArrayTime",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint64",
+                "name": "openTime",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "closeTime",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint256",
+                "name": "open",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "high",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "low",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "close",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "volume",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "quoteVolume",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint64",
+                "name": "firstTradeID",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "lastTradeID",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint32",
+                "name": "tradeCount",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bool",
+                "name": "isClosed",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct ICandleStorage.Candle[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "getCurrentCandle",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint64",
+                "name": "openTime",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "closeTime",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint256",
+                "name": "open",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "high",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "low",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "close",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "volume",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "quoteVolume",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint64",
+                "name": "firstTradeID",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "lastTradeID",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint32",
+                "name": "tradeCount",
+                "type": "uint32"
+              },
+              {
+                "internalType": "bool",
+                "name": "isClosed",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct ICandleStorage.Candle",
+            "name": "",
+            "type": "tuple"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "getLength",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "initialize",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "proxiableUUID",
+        "outputs": [
+          {
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint64",
+            "name": "",
+            "type": "uint64"
+          }
+        ],
+        "name": "timestampExists",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "name": "timestamps",
+        "outputs": [
+          {
+            "internalType": "uint64",
+            "name": "",
+            "type": "uint64"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "newImplementation",
+            "type": "address"
+          },
+          {
+            "internalType": "bytes",
+            "name": "data",
+            "type": "bytes"
+          }
+        ],
+        "name": "upgradeToAndCall",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+      }
+    ]
+  }
 }

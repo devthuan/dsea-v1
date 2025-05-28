@@ -70,7 +70,7 @@ const CandlestickVolume = ({data}) => {
 
     volumeSeries.priceScale().applyOptions({
       scaleMargins: {
-        top: 0.6,
+        top: 0.8,
         bottom: 0,
       },
     });

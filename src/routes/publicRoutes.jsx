@@ -3,6 +3,8 @@ import Asset from "@/pages/Asset/Asset";
 import Test from "@/pages/Test/Test";
 import Dashboard from "@/pages/Dashboard/Dashboard";
 import { Overview } from "@/pages/Overview/Overview";
+import TestHoang from "@/pages/Test/TestHoang";
+import TestNhat from "@/pages/Test/TestNhat";
 
 export const publicRoutes = [
   {
@@ -21,18 +23,18 @@ export const publicRoutes = [
     layout: DashboardLayout,
   },
   {
-    path: "/test-thang",
+    path: "/test",
     component: Test,
+    layout: DashboardLayout,
+  },
+  {
+    path: "/test-hoang",
+    component: TestHoang,
     layout: DashboardLayout,
   },
   {
     path: "/test-nhat",
-    component: Test,
-    layout: DashboardLayout,
-  },
-  {
-    path: "/tes3-hoang",
-    component: Test,
+    component: TestNhat,
     layout: DashboardLayout,
   },
 ];

@@ -5,10 +5,11 @@ import {
 } from "../smartContractService";
 // import candleStrick from "@/contracts/candleStrick.json";
 import candleStrick from "@/contracts/candleStrick.json";
+import MasterFactory from "@/contracts/MasterFactory.json";
 
 // Hàm lấy địa chỉ proxy từ MasterFactory
 export const getProxyAddress = async (symbol, interval, timeKey) => {
-  let masterFactoryData = candleStrick["MasterFactory"];
+  let masterFactoryData = MasterFactory["MasterFactory"];
   console.log(masterFactoryData)
   if (!masterFactoryData || !masterFactoryData.address) {
     throw new Error("Không thể tìm thấy MasterFactory trong candleStrick.json");
@@ -16,7 +17,7 @@ export const getProxyAddress = async (symbol, interval, timeKey) => {
   try {
     const proxyAddress = await fetchDataSmartContract(
       masterFactoryData,
-      "getCandleContract",
+      "getIntervalContractCount",
       symbol,
       interval,
       timeKey
@@ -33,7 +34,7 @@ export const getProxyAddress = async (symbol, interval, timeKey) => {
 };
 
 
-export const candleStrickService = {
+export const candleStrickServiceHoang = {
  
   fetchData: async () => {
     let now = new Date();
@@ -46,26 +47,24 @@ export const candleStrickService = {
 
     const symbol = "BTCUSDT";
     const interval = "1m";
-    const timeKey = ddmmyyyy; // Thay đổi theo ngày bạn muốn lấy dữ liệu
-    const proxyAddress = await getProxyAddress(
-      symbol,
-      interval,
-      timeKey
-    );
+    const timeKey = "22_05_2025"; // Thay đổi theo ngày bạn muốn lấy dữ liệu
+    // const proxyAddress = await getProxyAddress(
+    //   symbol,
+    //   interval,
+    //   timeKey
+    // );
 
-    const contractData = {
-      address: proxyAddress,
-      abi: candleStrick["CandleStorageLogic"].abi,
-    };
+    const contractData = MasterFactory["MasterFactory"];
 
     console.log("check address proxy: ", contractData)
 
     let result = await fetchDataSmartContract(
       contractData,
-      "getCandleByAmountAndTime",
-      // endTime,
+      "getKlinesBefore",
+      "BTCUSDT",
+      "1m",
       startTime,
-      200
+      100
     );
 
     if (!result) {
@@ -73,12 +72,12 @@ export const candleStrickService = {
       return [];
     }
 
-    console.log("check data from service:", result.length);
+    console.log("check data from service:", result);
     const formattedData = result.map((item) => {
       return {
-        time: Number(item.openTime) / 1000,
-        openTime: Number(item.openTime),
-        closeTime: Number(item.closeTime),
+        time: Number(item.open) / 1000,
+        openTime: Number(item.open),
+        closeTime: Number(item.close),
         open: Number(toUnits(item.open, 8)), // Chuyển chuỗi thành số
         high: Number(toUnits(item.high, 8)),
         low: Number(toUnits(item.low, 8)),
@@ -86,15 +85,19 @@ export const candleStrickService = {
         volume: Number(toUnits(item.volume, 8)),
         quoteVolume: Number(toUnits(item.quoteVolume, 8)),
         firstTradeID: Number(toUnits(item.firstTradeID, 8)),
-        lastTradeID: Number(toUnits(item.lastTradeID, 8)),
-        tradeCount: Number(toUnits(item.tradeCount, 8)),
+        lastTradeID: Number(toUnits(item.firstTradeId, 8)),
+        tradeCount: Number(toUnits(item.numberOfTrades, 8)),
+        // tradeCount: 1,
         isClosed: item.isClosed,
       };
     });
-
+    // check opentime trùng nhau
     formattedData.sort((a, b) => a.openTime - b.openTime);
+    const uniqueData = formattedData.filter((item, index, self) => {
+      return index === 0 || item.openTime !== self[index - 1].openTime;
+    });
     console.log("Formatted data:", formattedData);
-    return formattedData;
+    return uniqueData;
   },
 
   fetchDataOld: async (startTime) => {
@@ -104,14 +107,9 @@ export const candleStrickService = {
     console.log("startTime", startTime);
     console.log("endTime", endTime);
 
-    // let now = new Date();
-    // const startTime = now.getTime();
-    // const endTime = now.getTime() - 10 * 24 * 60 * 60 * 1000;
-    const ddmmyyyy = new Date(startTime).toLocaleDateString("en-GB").replace(/\//g, "_"); // dd_mm_yyyy now
-
     const symbol = "BTCUSDT";
     const interval = "1m";
-    const timeKey = ddmmyyyy;
+    const timeKey = "22_05_2025";
     const proxyAddress = await getProxyAddress(symbol, interval, timeKey);
 
     const contractData = {
@@ -156,15 +154,9 @@ export const candleStrickService = {
   },
 
   listeningEvent: async ({ callback }) => {
-    let now = new Date();
-    const startTime = now.getTime();
-    const endTime = now.getTime() - 10 * 24 * 60 * 60 * 1000;
-    const ddmmyyyy = new Date(startTime)
-      .toLocaleDateString("en-GB")
-      .replace(/\//g, "_"); // dd_mm_yyyy now
     const symbol = "BTCUSDT";
     const interval = "1m";
-    const timeKey = ddmmyyyy;
+    const timeKey = "22_05_2025";
     const proxyAddress = await getProxyAddress(symbol, interval, timeKey);
 
     const contractData = {
