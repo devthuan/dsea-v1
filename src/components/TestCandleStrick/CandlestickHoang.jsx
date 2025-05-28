@@ -111,10 +111,10 @@ const CandlestickHoang = ({ data }) => {
         if (!visibleTimeRange) return;
 
         const startTime = visibleTimeRange.from; // dạng Date hoặc timestamp
-        const startTimestampMs =
-          typeof startTime === "number"
-            ? startTime * 1000
-            : new Date(startTime).getTime();
+        // const startTimestampMs =
+        //   typeof startTime === "number"
+        //     ? startTime * 1000
+        //     : new Date(startTime).getTime();
         console.log("Start timestamp for fetching data:", startTime);
         const fetchData = async () => {
           try {

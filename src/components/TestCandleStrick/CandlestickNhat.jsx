@@ -153,7 +153,7 @@ const CandlestickNhat = ({ data }) => {
           }
         };
 
-        fetchData();
+        // fetchData();
 
         console.log("Đang load thêm dữ liệu lịch sử...");
       }
