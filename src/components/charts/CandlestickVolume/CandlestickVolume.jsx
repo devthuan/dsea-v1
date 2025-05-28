@@ -4,13 +4,11 @@ import {
   CandlestickSeries,
   HistogramSeries,
 } from "lightweight-charts";
-import axios from "axios";
 import { candleStrickService } from "@/services/candleStrick/candleStrickService";
 
 const CandlestickVolume = ({ data }) => {
   const candleSeriesRef = useRef(null);
   const histogramSeriesRef = useRef(null);
-  const socketRef = useRef(null);
   const lastCandleRef = useRef(null);
 
   const [volume, setVolume] = useState(null);
@@ -169,32 +167,6 @@ const CandlestickVolume = ({ data }) => {
     };
   }, []);
 
-  // init candle for chart | https
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         "https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1m&limit=300"
-  //       );
-
-  //       const candles = response.data.map((item) => ({
-  //         time: Math.floor(item[0] / 1000), // Convert to seconds
-  //         open: parseFloat(item[1]),
-  //         high: parseFloat(item[2]),
-  //         low: parseFloat(item[3]),
-  //         close: parseFloat(item[4]),
-  //         value: parseFloat(item[7]),
-  //       }));
-
-  //       setDataCandle(candles);
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
   // init data from smart contract
   useEffect(() => {
     const fetchData = async () => {
@@ -243,52 +215,6 @@ const CandlestickVolume = ({ data }) => {
       histogramSeriesRef.current.setData(volumeData);
     }
   }, [dataCandle]);
-
-  // real-time socket binance updates
-  // useEffect(() => {
-  //   const socket = new WebSocket(
-  //     "wss://stream.binance.com:9443/ws/btcusdt@kline_1m"
-  //   );
-  //   socketRef.current = socket;
-
-  //   socket.onmessage = (event) => {
-  //     const data = JSON.parse(event.data).k;
-  //     const newCandle = {
-  //       time: Math.floor(data.t), // Convert to seconds // open time
-  //       open: parseFloat(data.o),
-  //       high: parseFloat(data.h),
-  //       low: parseFloat(data.l),
-  //       close: parseFloat(data.c),
-  //       value: parseFloat(data.v),
-  //     };
-
-  //     if (
-  //       !lastCandleRef.current ||
-  //       lastCandleRef.current.time !== newCandle.time
-  //     ) {
-  //       // tạo nến mới
-  //       if (lastCandleRef.current && data.x) {
-  //         setDataCandle((prev) => [...prev, lastCandleRef.current]);
-  //       }
-  //       lastCandleRef.current = newCandle;
-  //     } else {
-  //       // cập nhật dữ liệu nến
-  //       lastCandleRef.current = newCandle;
-  //       candleSeriesRef.current.update(newCandle);
-  //       histogramSeriesRef.current.update({
-  //         time: newCandle.time,
-  //         value: newCandle.value * newCandle.open,
-  //         color: newCandle.close >= newCandle.open ? "#26a69a" : "#ef5350",
-  //       });
-  //     }
-  //   };
-
-  //   return () => {
-  //     if (socketRef.current) {
-  //       socketRef.current.close();
-  //     }
-  //   };
-  // }, []);
 
   // real-time smart contract updates
   useEffect(() => {

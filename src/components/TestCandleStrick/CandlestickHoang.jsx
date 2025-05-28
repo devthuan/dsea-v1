@@ -115,16 +115,21 @@ const CandlestickHoang = ({ data }) => {
           typeof startTime === "number"
             ? startTime * 1000
             : new Date(startTime).getTime();
-        console.log("Start timestamp for fetching data:", startTimestampMs);
+        console.log("Start timestamp for fetching data:", startTime);
         const fetchData = async () => {
           try {
             const result = await candleStrickServiceHoang.fetchDataOld(
-              startTimestampMs
+              startTime
             );
             console.log("Fetched result >>>:", result);
             const formattedData = result.map((item) => {
+              const openTime =
+                typeof item.openTime === "object" && "seconds" in item.openTime
+                  ? item.openTime.seconds
+                  : Math.floor(item.openTime);
+
               return {
-                time: item.openTime, // chuyển sang giây
+                time: openTime,
                 open: parseFloat(item.open),
                 high: parseFloat(item.high),
                 low: parseFloat(item.low),
@@ -132,6 +137,7 @@ const CandlestickHoang = ({ data }) => {
                 value: parseFloat(item.quoteVolume),
               };
             });
+
             if (result && result.length > 0) {
               setDataCandle((prevData) => {
                 const dataMap = new Map();
@@ -153,7 +159,7 @@ const CandlestickHoang = ({ data }) => {
           }
         };
 
-        // fetchData();
+        fetchData();
 
         console.log("Đang load thêm dữ liệu lịch sử...");
       }

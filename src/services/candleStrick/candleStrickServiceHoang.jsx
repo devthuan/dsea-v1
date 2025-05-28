@@ -17,8 +17,10 @@ export const getProxyAddress = async (symbol, interval, timeKey) => {
       "symbolIntervalContracts",
       symbol,
       interval,
-      0
+      timeKey
     );
+
+    console.log("check ..... ", proxyAddress);
     if (!proxyAddress) {
       throw new Error("Không thể lấy địa chỉ proxy từ MasterFactory");
     }
@@ -34,6 +36,9 @@ export const candleStrickServiceHoang = {
   fetchData: async () => {
     let now = new Date();
     const startTime = now.getTime();
+    const startTimestampMs = Math.floor(startTime / 1000); // Chuyển đổi sang giây
+    // chuyển sang phut
+    const startTimeInMinutes = Math.floor(startTimestampMs / 60);
     const endTime = now.getTime() - 10 * 24 * 60 * 60 * 1000;
     const ddmmyyyy = new Date(startTime)
       .toLocaleDateString("en-GB")
@@ -44,16 +49,21 @@ export const candleStrickServiceHoang = {
 
     const symbol = "BTCUSDT";
     const interval = "1m";
-    const timeKey = ddmmyyyy; // Thay đổi theo ngày bạn muốn lấy dữ liệu
-    const proxyAddress = await getProxyAddress(symbol, interval, timeKey);
+    const timeKey = 0; // Thay đổi theo ngày bạn muốn lấy dữ liệu
+    // const proxyAddress = await getProxyAddress(symbol, interval, timeKey);
 
-    const contractData = {
-    address: proxyAddress,
-    abi: MasterFactory["Interval"].abi,
-    };
-    
+    // const contractData = {
+    //   address: proxyAddress.contractAddress,
+    //   abi: MasterFactory["Interval"].abi,
+    // };
 
-    // const contractData = MasterFactory["MasterFactory"];
+    const contractData = MasterFactory["MasterFactory"];
+
+    console.log("check startTime :", startTime);
+    console.log("check endTime :", endTime);
+    console.log("check timeKey :", timeKey);
+    console.log("check symbol :", symbol);
+    console.log("check interval :", interval);
 
     console.log("check address proxy: ", contractData);
 
@@ -107,17 +117,19 @@ export const candleStrickServiceHoang = {
     console.log("startTime", startTime);
     console.log("endTime", endTime);
 
-   const symbol = "BTCUSDT";
-       const interval = "1m";
-       const timeKey = "ddmmyyyy"; // Thay đổi theo ngày bạn muốn lấy dữ liệu
-       const proxyAddress = await getProxyAddress(symbol, interval, timeKey);
-   
-       const contractData = {
-         address: proxyAddress,
-         abi: MasterFactory["Interval"].abi,
-       };
-   
-       console.log("check address proxy: ", contractData);
+    const symbol = "BTCUSDT";
+    const interval = "1m";
+    const timeKey = 0; // Thay đổi theo ngày bạn muốn lấy dữ liệu
+    // const proxyAddress = await getProxyAddress(symbol, interval, timeKey);
+
+    // const contractData = {
+    //   address: proxyAddress.contractAddress,
+    //   abi: MasterFactory["Interval"].abi,
+    // };
+
+    const contractData = MasterFactory["MasterFactory"];
+
+    console.log("check address proxy: ", contractData);
 
     let result = await fetchDataSmartContract(
       contractData,
@@ -138,9 +150,9 @@ export const candleStrickServiceHoang = {
     console.log("check data from service:", result.length);
     const formattedData = result.map((item) => {
       return {
-        time: Number(item.open),
-        openTime: Number(item.open),
-        closeTime: Number(item.close),
+        time: Number(item.timestamp),
+        openTime: Number(item.timestamp),
+        closeTime: Number(item.endTimestamp),
         open: Number(toUnits(item.open, 8)), // Chuyển chuỗi thành số
         high: Number(toUnits(item.high, 8)),
         low: Number(toUnits(item.low, 8)),
@@ -165,14 +177,14 @@ export const candleStrickServiceHoang = {
 
     const symbol = "BTCUSDT";
     const interval = "1m";
-    const timeKey = "ddmmyyyy"; // Thay đổi theo ngày bạn muốn lấy dữ liệu
-    const proxyAddress = await getProxyAddress(symbol, interval, timeKey);
+    const timeKey = 0; // Thay đổi theo ngày bạn muốn lấy dữ liệu
+    // const proxyAddress = await getProxyAddress(symbol, interval, timeKey);
 
-    const contractData = {
-      address: proxyAddress,
-      abi: MasterFactory["Interval"].abi,
-    };
-
+    // const contractData = {
+    //   address: proxyAddress,
+    //   abi: MasterFactory["Interval"].abi,
+    // };
+    const contractData = MasterFactory["MasterFactory"];
 
     console.log("check address interval: ", contractData);
 

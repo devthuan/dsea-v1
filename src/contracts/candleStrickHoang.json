@@ -1,6 +1,6 @@
 {
   "MasterFactory": {
-    "address": "0x1238754b2fe5D214F0Aaab9ea1B85dBbdb0Ed081",
+    "address": "0xAe54998bdDDC783d9b9f290465C9C13700345C16",
     "abi": [
 	{
 		"inputs": [
@@ -618,10 +618,626 @@
 		"stateMutability": "view",
 		"type": "function"
 	}
-  ]
+    ]
   },
   "Interval":{
-    "abi": ""
+    "abi": [
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_symbol",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_interval",
+				"type": "string"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "ContractFull",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "string",
+				"name": "klineSymbol",
+				"type": "string"
+			},
+			{
+				"indexed": true,
+				"internalType": "string",
+				"name": "klineInterval",
+				"type": "string"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "endTimestamp",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "firstTradeId",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "lastTradeId",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "open",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "high",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "low",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "close",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "volume",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "numberOfTrades",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "bool",
+				"name": "isClosed",
+				"type": "bool"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "quoteVolume",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "takerBuyVolume",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "takerBuyQuoteVolume",
+				"type": "uint256"
+			}
+		],
+		"name": "KlineAdded",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "MAX_KLINES",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "endTimestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "symbol",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "interval",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "firstTradeId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lastTradeId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "open",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "high",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "low",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "close",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "volume",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "numberOfTrades",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isClosed",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "quoteVolume",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "takerBuyVolume",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "takerBuyQuoteVolume",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct IntervalContract.KlineInput",
+				"name": "input",
+				"type": "tuple"
+			}
+		],
+		"name": "addKline",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "factory",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getInterval",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getKlineCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "startIndex",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "endIndex",
+				"type": "uint256"
+			}
+		],
+		"name": "getKlines",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "endTimestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "symbol",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "firstTradeId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lastTradeId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "open",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "high",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "low",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "close",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "volume",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "numberOfTrades",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isClosed",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "quoteVolume",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "takerBuyVolume",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "takerBuyQuoteVolume",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct IntervalContract.Kline[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_endTime",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_limit",
+				"type": "uint256"
+			}
+		],
+		"name": "getKlinesBefore",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "endTimestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "symbol",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "firstTradeId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lastTradeId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "open",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "high",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "low",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "close",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "volume",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "numberOfTrades",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isClosed",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "quoteVolume",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "takerBuyVolume",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "takerBuyQuoteVolume",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct IntervalContract.Kline[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getSymbol",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "interval",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "klines",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "endTimestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "symbol",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "firstTradeId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "lastTradeId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "open",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "high",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "low",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "close",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "volume",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "numberOfTrades",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "isClosed",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "quoteVolume",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "takerBuyVolume",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "takerBuyQuoteVolume",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "symbol",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+    ]
   }
   
 }
