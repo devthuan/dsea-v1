@@ -46,7 +46,7 @@ export const candleStrickService = {
 
     const symbol = "BTCUSDT";
     const interval = "1m";
-    const timeKey = ddmmyyyy; // Thay đổi theo ngày bạn muốn lấy dữ liệu
+    const timeKey = "28_05_2025"; // Thay đổi theo ngày bạn muốn lấy dữ liệu
     const proxyAddress = await getProxyAddress(symbol, interval, timeKey);
 
     const contractData = {
