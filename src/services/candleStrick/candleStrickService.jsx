@@ -111,7 +111,7 @@ export const candleStrickService = {
 
     const symbol = "BTCUSDT";
     const interval = "1m";
-    const timeKey = ddmmyyyy;
+    const timeKey = "28_05_2025";
     const proxyAddress = await getProxyAddress(symbol, interval, timeKey);
 
     const contractData = {
@@ -165,7 +165,8 @@ export const candleStrickService = {
       .replace(/\//g, "_"); // dd_mm_yyyy now
     const symbol = "BTCUSDT";
     const interval = "1m";
-    const timeKey = ddmmyyyy;
+    // const timeKey = ddmmyyyy;
+    const timeKey = "28_05_2025";
     const proxyAddress = await getProxyAddress(symbol, interval, timeKey);
 
     const contractData = {
