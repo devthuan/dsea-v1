@@ -18,6 +18,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 
 export default function Signal() {
   const [chain, setChain] = useState("All Chain");
@@ -80,7 +91,7 @@ export default function Signal() {
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                {chainOptions?.map((item,index) => {
+                {chainOptions?.map((item, index) => {
                   return (
                     <SelectItem
                       key={index}
@@ -89,7 +100,7 @@ export default function Signal() {
                       onClick={() => handleChainSelect(item)}
                     >
                       <span className="inline-block w-5 h-5  items-center justify-center text-xs bg-gray-100 rounded-full">
-                        <img src={item.logo} alt=""  />
+                        <img src={item.logo} alt="" />
                       </span>
                       {item.name}
                     </SelectItem>
@@ -98,7 +109,6 @@ export default function Signal() {
               </SelectGroup>
             </SelectContent>
           </Select>
-          
         </div>
 
         {/* Action Buttons */}
@@ -107,11 +117,30 @@ export default function Signal() {
             <span className="bg-gray-300 rounded-full w-4 h-4"></span>
             Create Alert
           </button>
+          
+          <AlertDialog>
+            <AlertDialogTrigger>
+              <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-full bg-white text-sm">
+                <Bell size={16} />
+                Create Alert
+              </button>
+            </AlertDialogTrigger>
 
-          <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-full bg-white text-sm">
-            <Bell size={16} />
-            Create Alert
-          </button>
+            <AlertDialogContent className="w-[1000px]">
+              <AlertDialogHeader>
+                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  This action cannot be undone. This will permanently delete
+                  your account and remove your data from our servers.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction>Continue</AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+
+          </AlertDialog>
         </div>
       </div>
 

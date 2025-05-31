@@ -32,12 +32,12 @@ export const Overview = () => {
         <BoxTokenNetFlow />
       </div>
       
-      {/* <div className="mt-[30px] ">
+      <div className="mt-[30px] ">
         <BoxRealTimeTXS />
       </div>
       <div className="mt-[30px] ">
         <BoxFOT />
-      </div> */}
+      </div>
     </div>
   );
 };

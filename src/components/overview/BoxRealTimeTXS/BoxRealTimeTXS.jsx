@@ -168,7 +168,7 @@ const TableComponent = ({title, columns, data}) => {
       <div className="w-full h-[583px] mx-auto p-2">
         <div className="w-full h-full relative bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
           {/* Header */}
-          <div className="px-6 py-5 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 border-b border-gray-200">
+          <div className="px-6 py-5  from-blue-50 via-indigo-50 to-purple-50 border-b border-gray-200">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">

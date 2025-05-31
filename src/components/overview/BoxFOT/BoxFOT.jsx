@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NetFlowChart from "../../charts/NetFlowChart/NetFlowChart";
 import TabButtons from "../../TabButtons/TabButtons";
 import ButtonCustom from "../../ButtonCustom/ButtonCustom";
@@ -7,7 +7,8 @@ import CandlestickVolume from "../../charts/CandlestickVolume/CandlestickVolume"
 import FundingRateChart from "../../charts/LineChartReChart/FundingRateChart";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
+import CandlestickHoang from "@/components/TestCandleStrick/CandlestickHoang";
+import { candleStrickServiceHoang } from "@/services/candleStrick/candleStrickServiceHoang";
 
 const btcData = [
   { name: "2024-01-01", inflow: 32000, outflow: 28000, price: 42000 },
@@ -37,13 +38,26 @@ const btcData = [
 ];
 
 const BoxFOT = () => {
+
+    const [dataCandle, setDataCandle] = useState([]);
+  useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const result = await candleStrickServiceHoang.fetchData();
+          console.log("Fetched result:", result); // Check what you're getting
+          setDataCandle(result);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
   
-  
+      fetchData();
+    }, []);
 
   return (
     <div className="w-full h-full  rounded-[32px] p-[24px] bg-white">
       <Tabs defaultValue="fundingRate" className="w-full ">
-        <TabsList className=" mb-4 bg-amber-200">
+        <TabsList className=" mb-4 ">
           <TabsTrigger
             className="px-4 py-3 rounded-lg data-[state=active]:bg-[var(--primary)] data-[state=active]:text-white data-[state=active]:shadow-sm transition-all duration-200"
             value="fundingRate"
@@ -70,7 +84,7 @@ const BoxFOT = () => {
           <FundingRateChart />
         </TabsContent>
         <TabsContent value="traingView">
-          <CandlestickVolume />
+          <CandlestickHoang data={dataCandle} />
         </TabsContent>
       </Tabs>
     </div>

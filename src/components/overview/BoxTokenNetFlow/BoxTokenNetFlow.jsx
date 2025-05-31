@@ -17,11 +17,10 @@ const NetFlowChart = ({ data }) => (
 );
 
 const CustomPieChartComponent = ({ width, height, outerRadius }) => (
-  <div className="relative h-full w-full" >
+  <div className="relative h-full w-full">
     <div className="absolute inset-0   rounded-xl flex items-center justify-center ">
       <div className="text-center w-full h-full">
-       
-        <CustomPieChart/>
+        <CustomPieChart />
       </div>
     </div>
   </div>
@@ -30,8 +29,7 @@ const CustomPieChartComponent = ({ width, height, outerRadius }) => (
 const AccumulationChartComponent = () => (
   <div className="w-full h-96 rounded-xl flex items-center justify-center ">
     <div className="text-center w-full h-full">
-     
-      <AccumulationChart/>
+      <AccumulationChart />
     </div>
   </div>
 );
@@ -56,8 +54,8 @@ const BoxTokenNetFlow = () => {
   ];
 
   return (
-    <div className="w-full h-full bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      <div className=" mx-auto p-2">
+    <div className="w-full h-full  rounded-md shadow-lg border border-gray-100 p-4">
+      <div className=" mx-auto ">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-2">
@@ -75,7 +73,7 @@ const BoxTokenNetFlow = () => {
         </div>
 
         {/* Main Content */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 ">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl  border border-white/20 ">
           <Tabs defaultValue="netflow" className="w-full ">
             <TabsList className="h-auto grid w-full grid-cols-4 mb-2 bg-gray-100/50 p-1 rounded-xl">
               <TabsTrigger
@@ -117,7 +115,7 @@ const BoxTokenNetFlow = () => {
             </TabsList>
 
             <TabsContent value="netflow" className="space-y-6">
-              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
+              <div className="rounded-xl p-6 ">
                 <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
                   <TrendingUp className="w-5 h-5 text-blue-600" />
                   Net Inflow/Outflow Analysis
@@ -127,7 +125,7 @@ const BoxTokenNetFlow = () => {
             </TabsContent>
 
             <TabsContent value="onchain" className="space-y-6">
-              <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-2 border border-purple-100">
+              <div className=" rounded-xl p-2 ">
                 <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
                   <BarChart3 className="w-5 h-5 text-purple-600" />
                   On-chain Exchange Flow
@@ -186,19 +184,19 @@ const WhaleStatusTab = ({ activeTab, onTabChange }) => {
       {/* Stats Section */}
       <div className="space-y-6">
         {/* Time Period Selector */}
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+        <div className="bg-white rounded-xl p-2 shadow-sm border border-gray-100">
           <div className="flex gap-2">
             {periods.map((period) => (
               <button
                 key={period.id}
                 onClick={() => setSelectedPeriod(period.id)}
-                className={`w-full p-3 rounded-lg text-center transition-all duration-200 ${
+                className={`w-full p-1 rounded-lg text-center transition-all duration-200 ${
                   selectedPeriod === period.id
-                    ? `bg-${period.color}-100 border-${period.color}-300 text-${period.color}-800 border-2`
+                    ? ` border-${period.color}-300 text-${period.color}-800 border-2`
                     : "bg-gray-50 hover:bg-gray-100 border border-gray-200"
                 }`}
               >
-                <span className="font-medium text-base">{period.label}</span>
+                <span className="font-medium ">{period.label}</span>
               </button>
             ))}
           </div>

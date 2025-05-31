@@ -41,7 +41,7 @@ const Asset = () => {
         TOP Cryptocurrencies Price List by Market Capitalization.
       </div>
 
-      <div className="px-[40px] flex gap-2 ">
+      <div className="px-[40px] flex gap-2 bg-gray-50">
         <BoxItemChart />
       </div>
 
@@ -53,8 +53,6 @@ const Asset = () => {
           <BoxFearGear />
         </div>
       </div>
-
-    
     </div>
   );
 };

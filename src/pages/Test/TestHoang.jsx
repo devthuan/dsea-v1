@@ -16,7 +16,7 @@ const TestHoang = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await candleStrickServiceHoang.fetchData();
+        const result = await candleStrickService.fetchData();
         console.log("Fetched result:", result); // Check what you're getting
         setDataCandle(result);
       } catch (error) {
@@ -34,7 +34,7 @@ const TestHoang = () => {
 
   return (
     <div className="">
-      <CandlestickHoang data={dataCandle} />
+      <CandlestickVolume data={dataCandle} />
     </div>
   );
 };
