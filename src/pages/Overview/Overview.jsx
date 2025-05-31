@@ -7,7 +7,7 @@ import BoxTokenNetFlow from "@/components/overview/BoxTokenNetFlow/BoxTokenNetFl
 
 export const Overview = () => {
   return (
-    <div className={"w-full h-full "}>
+    <div className={"w-full h-full px-4"}>
       <div className="justify-start text-black text-2xl font-semibold ">
         Crypto Market Insights and Analytics
       </div>
@@ -32,12 +32,12 @@ export const Overview = () => {
         <BoxTokenNetFlow />
       </div>
       
-      <div className="mt-[30px] ">
+      {/* <div className="mt-[30px] ">
         <BoxRealTimeTXS />
       </div>
       <div className="mt-[30px] ">
         <BoxFOT />
-      </div>
+      </div> */}
     </div>
   );
 };

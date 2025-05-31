@@ -1,35 +1,37 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TrendingUp, TrendingDown, Activity, BarChart3 } from "lucide-react";
+import NetFlowChartCustom from "@/components/charts/netFlowChart/NetFlowChartCustom";
+import StableCoinNetFlow from "@/components/dashboard/StableCoinNetFlow/StableCoinNetFlow";
+import StableCoinNetFlowChart from "@/components/charts/netFlowChart/StableCoinNetFlowChart";
+import CustomPieChart from "@/components/charts/PieChart/CustomPieChart";
+import AccumulationChart from "@/components/charts/LineChartReChart/AccumulationChart";
 
 // Mock components - replace with your actual components
 const NetFlowChart = ({ data }) => (
-  <div className="w-full h-96 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl flex items-center justify-center border border-blue-200">
-    <div className="text-center">
-      <BarChart3 size={48} className="mx-auto mb-4 text-blue-600" />
-      <p className="text-gray-600">
-        Net Flow Chart ({data.length} data points)
-      </p>
+  <div className="w-full h-96    rounded-xl flex items-center justify-center  ">
+    <div className="text-center w-full h-full mb-10">
+      <NetFlowChartCustom data={data} />
     </div>
   </div>
 );
 
-const CustomPieChart = ({ width, height, outerRadius }) => (
-  <div className="relative" style={{ width, height }}>
-    <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-pink-100 rounded-xl flex items-center justify-center border border-purple-200">
-      <div className="text-center">
-        <Activity size={48} className="mx-auto mb-4 text-purple-600" />
-        <p className="text-gray-600">Whale Status Distribution</p>
+const CustomPieChartComponent = ({ width, height, outerRadius }) => (
+  <div className="relative h-full w-full" >
+    <div className="absolute inset-0   rounded-xl flex items-center justify-center ">
+      <div className="text-center w-full h-full">
+       
+        <CustomPieChart/>
       </div>
     </div>
   </div>
 );
 
-const AccumulationChart = () => (
-  <div className="w-full h-96 bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl flex items-center justify-center border border-green-200">
-    <div className="text-center">
-      <TrendingUp size={48} className="mx-auto mb-4 text-green-600" />
-      <p className="text-gray-600">Whale Accumulation Trend</p>
+const AccumulationChartComponent = () => (
+  <div className="w-full h-96 rounded-xl flex items-center justify-center ">
+    <div className="text-center w-full h-full">
+     
+      <AccumulationChart/>
     </div>
   </div>
 );
@@ -55,7 +57,7 @@ const BoxTokenNetFlow = () => {
 
   return (
     <div className="w-full h-full bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      <div className="container mx-auto p-6">
+      <div className=" mx-auto p-2">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-2">
@@ -73,12 +75,12 @@ const BoxTokenNetFlow = () => {
         </div>
 
         {/* Main Content */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 ">
           <Tabs defaultValue="netflow" className="w-full ">
             <TabsList className="h-auto grid w-full grid-cols-4 mb-2 bg-gray-100/50 p-1 rounded-xl">
               <TabsTrigger
                 value="netflow"
-                className="px-4 py-3 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-200"
+                className="px-4 py-3 rounded-lg data-[state=active]:bg-[var(--primary)] data-[state=active]:text-white data-[state=active]:shadow-sm transition-all duration-200"
               >
                 <div className="flex items-center gap-2">
                   <TrendingUp className="w-4 h-4" />
@@ -87,7 +89,7 @@ const BoxTokenNetFlow = () => {
               </TabsTrigger>
               <TabsTrigger
                 value="onchain"
-                className="px-4 py-3 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-200"
+                className="px-4 py-3 rounded-lg data-[state=active]:bg-[var(--primary)] data-[state=active]:text-white data-[state=active]:shadow-sm transition-all duration-200"
               >
                 <div className="flex items-center gap-2">
                   <BarChart3 className="w-4 h-4" />
@@ -96,7 +98,7 @@ const BoxTokenNetFlow = () => {
               </TabsTrigger>
               <TabsTrigger
                 value="whaleStatus"
-                className="px-4 py-3 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-200"
+                className="px-4 py-3 rounded-lg data-[state=active]:bg-[var(--primary)] data-[state=active]:text-white data-[state=active]:shadow-sm transition-all duration-200"
               >
                 <div className="flex items-center gap-2">
                   <Activity className="w-4 h-4" />
@@ -105,7 +107,7 @@ const BoxTokenNetFlow = () => {
               </TabsTrigger>
               <TabsTrigger
                 value="accumulation"
-                className="px-4 py-3 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-200"
+                className="px-4 py-3 rounded-lg data-[state=active]:bg-[var(--primary)] data-[state=active]:text-white data-[state=active]:shadow-sm transition-all duration-200"
               >
                 <div className="flex items-center gap-2">
                   <TrendingUp className="w-4 h-4" />
@@ -125,7 +127,7 @@ const BoxTokenNetFlow = () => {
             </TabsContent>
 
             <TabsContent value="onchain" className="space-y-6">
-              <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-100">
+              <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-2 border border-purple-100">
                 <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
                   <BarChart3 className="w-5 h-5 text-purple-600" />
                   On-chain Exchange Flow
@@ -142,12 +144,12 @@ const BoxTokenNetFlow = () => {
             </TabsContent>
 
             <TabsContent value="accumulation" className="space-y-6">
-              <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-6 border border-green-100">
+              <div className=" rounded-xl p-6">
                 <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
                   <TrendingUp className="w-5 h-5 text-green-600" />
                   Whale Accumulation Trend
                 </h3>
-                <AccumulationChart />
+                <AccumulationChartComponent />
               </div>
             </TabsContent>
           </Tabs>
@@ -176,8 +178,8 @@ const WhaleStatusTab = ({ activeTab, onTabChange }) => {
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       {/* Chart Section */}
       <div className="lg:col-span-2">
-        <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-100 h-full flex items-center justify-center">
-          <CustomPieChart width={600} height={400} outerRadius={120} />
+        <div className=" rounded-xl p-6 border border-indigo-100 h-full flex items-center justify-center">
+          <CustomPieChartComponent width={600} height={400} outerRadius={120} />
         </div>
       </div>
 

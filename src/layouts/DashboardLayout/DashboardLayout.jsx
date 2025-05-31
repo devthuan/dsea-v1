@@ -244,7 +244,7 @@ export function DashboardLayout({ children }) {
             </div>
           </div>
         </header>
-        <div className="h-full flex-1 overflow-auto px-4 py-2">{children}</div>
+        <div className="h-full flex-1 overflow-auto  py-2">{children}</div>
       </SidebarInset>
     </SidebarProvider>
   );

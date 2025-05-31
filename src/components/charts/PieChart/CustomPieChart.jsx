@@ -71,8 +71,8 @@ const yOuter = cy + (outerRadius + labelDistance) * Math.sin(-midAngle * RADIAN)
 const CustomPieChart = ({
   data = [],
   width = "100%",
-  height = 400,
-  outerRadius = 80,
+  height = "100%",
+  outerRadius = 180,
   colors = ["#14B8A6", "#82ca9d", "#ffc658"],
 }) => {
   return (

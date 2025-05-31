@@ -6,6 +6,8 @@ import CandlestickVolume from "../../charts/CandlestickVolume/CandlestickVolume"
 
 import FundingRateChart from "../../charts/LineChartReChart/FundingRateChart";
 
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 
 const btcData = [
   { name: "2024-01-01", inflow: 32000, outflow: 28000, price: 42000 },
@@ -35,34 +37,42 @@ const btcData = [
 ];
 
 const BoxFOT = () => {
-  const [activeTab, setActiveTab] = useState("flows");
-  const tabsData = [
-    { id: "flows", label: "Funding Rate" },
-    { id: "aum", label: "Open Interest" },
-    { id: "marketCap", label: "Trading view" },
-  ];
+  
   
 
   return (
     <div className="w-full h-full  rounded-[32px] p-[24px] bg-white">
-      <div className="mt-4 ">
-        <TabButtons
-          tabs={tabsData}
-          activeTab={activeTab}
-          onTabClick={setActiveTab}
-          tabType="type4"
-        />
-      </div>
-
-      <div className="mt-[27px]">
-        {activeTab === "flows" && <NetFlowChart data={btcData} />}
-        {activeTab === "aum" && <FundingRateChart/>}
-        {activeTab === "marketCap" && (
-          <CandlestickVolume
-           
-          />
-        )}
-      </div>
+      <Tabs defaultValue="fundingRate" className="w-full ">
+        <TabsList className=" mb-4 bg-amber-200">
+          <TabsTrigger
+            className="px-4 py-3 rounded-lg data-[state=active]:bg-[var(--primary)] data-[state=active]:text-white data-[state=active]:shadow-sm transition-all duration-200"
+            value="fundingRate"
+          >
+            Funding rate
+          </TabsTrigger>
+          <TabsTrigger
+            className="px-4 py-3 rounded-lg data-[state=active]:bg-[var(--primary)] data-[state=active]:text-white data-[state=active]:shadow-sm transition-all duration-200"
+            value="openInterest"
+          >
+            Open interest
+          </TabsTrigger>
+          <TabsTrigger
+            className="px-4 py-3 rounded-lg data-[state=active]:bg-[var(--primary)] data-[state=active]:text-white data-[state=active]:shadow-sm transition-all duration-200"
+            value="traingView"
+          >
+            Trading view
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="fundingRate">
+          <NetFlowChart data={btcData} />
+        </TabsContent>
+        <TabsContent value="openInterest">
+          <FundingRateChart />
+        </TabsContent>
+        <TabsContent value="traingView">
+          <CandlestickVolume />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };

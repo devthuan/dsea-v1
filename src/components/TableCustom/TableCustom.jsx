@@ -153,8 +153,8 @@ const TableCustom = ({
     return pages;
   };
   return (
-    <div className="w-full h-[583px] max-w-4xl mx-auto p-2">
-      <div className="h-full relative bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+    <div className="w-full h-[583px] mx-auto p-2">
+      <div className="w-full h-full relative bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
         {/* Header */}
         <div className="px-5 py-4 bg-gradient-to-r from-slate-50 to-gray-50 border-b border-gray-200">
           <h1 className="text-xl font-bold text-gray-900 tracking-tight">
@@ -235,10 +235,11 @@ const TableCustom = ({
                 Showing {startIndex + 1}-{Math.min(endIndex, allData.length)} of{" "}
                 {allData.length} entities
               </p>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 bg-green-100 rounded-full px-3 py-1.5">
                 <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
                 <span className="text-xs text-gray-600">Live</span>
               </div>
+            
             </div>
 
             {/* Pagination Controls */}
@@ -308,7 +309,6 @@ const TableCustom = ({
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );

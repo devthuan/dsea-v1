@@ -13,7 +13,7 @@ import {
 } from "recharts";
 
 
-const StableCoinNetFlowChart = ({ data = [] }) => {
+const NetFlowChartCustom = ({ data = [] }) => {
   // Tính toán Net Flow
   const processedData = data?.map((item) => ({
     ...item,
@@ -143,7 +143,7 @@ const StableCoinNetFlowChart = ({ data = [] }) => {
 
   return (
     <div
-      style={{ width: "100%", height: 400 }}
+      style={{ width: "100%", height: "100%" }}
       onWheel={handleWheel}
       onMouseEnter={() => setIsMouseOver(true)}
       onMouseLeave={() => setIsMouseOver(false)}
@@ -210,7 +210,7 @@ const StableCoinNetFlowChart = ({ data = [] }) => {
           <Line
             yAxisId="right"
             type="monotone"
-            dataKey="balance"
+            dataKey="price"
             stroke="#EBBB4F"
             strokeWidth={2}
             dot={false}
@@ -231,4 +231,4 @@ const StableCoinNetFlowChart = ({ data = [] }) => {
   );
 };
 
-export default StableCoinNetFlowChart;
+export default NetFlowChartCustom;

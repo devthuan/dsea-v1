@@ -33,7 +33,7 @@ const Asset = () => {
   ];
 
   return (
-    <div className={"w-auto h-full flex flex-col gap-y-5 "}>
+    <div className={"w-auto h-full flex flex-col gap-y-5 px-6 "}>
       <div className="justify-start text-black text-2xl font-bold">
         Crypto Market Insights and Analytics
       </div>
@@ -54,19 +54,7 @@ const Asset = () => {
         </div>
       </div>
 
-      {/* <div className="mt-[30px] w-full h-full max-h-[660px] grid grid-cols-2 gap-4">
-        <div className="w-full h-full">
-          <BoxBitcoinDominance />
-        </div>
-        <div className="">
-          <BoxFearGear />
-        </div>
-      </div> */}
-
-      {/* wrap top performance top altCoin */}
-      {/* <div className="mt-[30px] ">
-        <BoxTableTopPerformance />
-      </div> */}
+    
     </div>
   );
 };

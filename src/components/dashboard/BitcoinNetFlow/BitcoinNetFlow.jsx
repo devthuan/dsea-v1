@@ -247,7 +247,7 @@ const BitcoinNetFlow = () => {
 
   return (
     <div
-      className="w-full h-full  rounded-[15px] p-[24px] shadow-sm 
+      className="w-full h-full max-h-[400px]  rounded-[15px] p-[24px] shadow-sm 
       "
     >
       <div className=" w-full flex items-center justify-between">
