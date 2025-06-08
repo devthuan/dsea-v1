@@ -5,6 +5,8 @@ import Dashboard from "@/pages/Dashboard/Dashboard";
 import { Overview } from "@/pages/Overview/Overview";
 import TestHoang from "@/pages/Test/TestHoang";
 import TestNhat from "@/pages/Test/TestNhat";
+import Deepsea from "@/pages/Deepsea/Deepsea";
+import SharkAI from "@/pages/SharkAI/SharkAI";
 
 export const publicRoutes = [
   {
@@ -20,6 +22,16 @@ export const publicRoutes = [
   {
     path: "/overview",
     component: Overview,
+    layout: DashboardLayout,
+  },
+  {
+    path: "/deepsea",
+    component: Deepsea,
+    layout: DashboardLayout,
+  },
+  {
+    path: "/shark-ai",
+    component: SharkAI,
     layout: DashboardLayout,
   },
   {

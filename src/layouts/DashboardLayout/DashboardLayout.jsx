@@ -13,15 +13,12 @@ import {
   FishSymbol,
 } from "lucide-react";
 
-
-
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-
 
 import {
   Collapsible,
@@ -63,6 +60,7 @@ const menuItems = [
     icon: Wallet,
     url: "#",
     submenu: [
+      { id: "assets", title: "Assets", url: "/asset" },
       { id: "Top gainer", title: "Top gainer", url: "/asset" },
       { id: "Top loser", title: "Top loser", url: "#" },
       { id: "Heap map", title: "Heap map", url: "#", isActive: true },
@@ -75,11 +73,23 @@ const menuItems = [
     icon: FishSymbol,
     url: "#",
     submenu: [
-      { id: "all-users", title: "All Users", url: "#" },
+      { id: "deepsea", title: "Deepsea", url: "/deepsea" },
       { id: "add-user", title: "Add New User", url: "#" },
       { id: "user-groups", title: "User Groups", url: "#" },
       { id: "permissions", title: "Permissions", url: "#" },
     ],
+  },
+  {
+    id: "Shark AI",
+    title: "Shark AI",
+    icon: FishSymbol,
+    url: "/shark-ai",
+    // submenu: [
+    //   { id: "all-users", title: "All Users", url: "#" },
+    //   { id: "add-user", title: "Add New User", url: "#" },
+    //   { id: "user-groups", title: "User Groups", url: "#" },
+    //   { id: "permissions", title: "Permissions", url: "#" },
+    // ],
   },
   {
     id: "settings",
@@ -111,7 +121,7 @@ export function DashboardLayout({ children }) {
   };
 
   return (
-    <SidebarProvider className={"w-[99vw]"} defaultOpen={true}>
+    <SidebarProvider className={"w-[99vw] "} defaultOpen={true}>
       <Sidebar collapsible="icon">
         <SidebarHeader>
           <SidebarMenu>
@@ -244,7 +254,7 @@ export function DashboardLayout({ children }) {
             </div>
           </div>
         </header>
-        <div className="h-full flex-1 overflow-auto  py-2">{children}</div>
+        <div className="h-full flex-1   py-2">{children}</div>
       </SidebarInset>
     </SidebarProvider>
   );

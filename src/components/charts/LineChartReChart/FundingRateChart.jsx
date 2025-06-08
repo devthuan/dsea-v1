@@ -64,11 +64,11 @@ const CustomTooltip = ({ active, payload, label }) => {
 
 const FundingRateChart = () => {
   return (
-    <div className="w-full bg-gradient-to-br from-slate-50 to-blue-50  rounded-xl shadow-lg">
+    <div className="w-full ">
      
 
       {/* Chart Container */}
-      <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
+      <div className="bg-white rounded-lg p-4 ">
         <ResponsiveContainer width="100%" height={500}>
           <ComposedChart 
             data={data}

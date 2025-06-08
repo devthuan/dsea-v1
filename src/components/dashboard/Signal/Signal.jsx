@@ -28,7 +28,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
+} from "@/components/ui/alert-dialog";
+import CreateSignal from "@/components/CreateSignal/CreateSignal";
 
 export default function Signal() {
   const [chain, setChain] = useState("All Chain");
@@ -113,11 +114,12 @@ export default function Signal() {
 
         {/* Action Buttons */}
         <div className="flex gap-2">
-          <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-full bg-gray-100 text-sm">
-            <span className="bg-gray-300 rounded-full w-4 h-4"></span>
-            Create Alert
+          <button className="flex items-center gap-2  border border-gray-300 rounded-full bg-gray-100 text-sm">
+            {/* <span className="bg-gray-300 rounded-full w-4 h-4"></span>
+            Create Alert */}
+            <CreateSignal />
           </button>
-          
+
           <AlertDialog>
             <AlertDialogTrigger>
               <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-full bg-white text-sm">
@@ -139,7 +141,6 @@ export default function Signal() {
                 <AlertDialogAction>Continue</AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
-
           </AlertDialog>
         </div>
       </div>

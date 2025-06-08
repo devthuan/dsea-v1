@@ -1,6 +1,3 @@
-// import BoxFearGear from "@/components/asset/BoxFearGear/BoxFearGear";
-// import BoxTableTopPerformance from "@/components/asset/BoxTableTopPerformance/BoxTableTopPerformance";
-// import BoxBitcoinDominance from "@/components/asset/BoxBitcoinDominance/BoxBitcoinDominance";
 import BoxBitcoinDominance from "@/components/asset/BoxBitcoinDominance/BoxBitcoinDominance";
 import BoxFearGear from "@/components/asset/BoxFearGear/BoxFearGear";
 import BoxTableTopPerformance from "@/components/asset/BoxTableTopPerformance/BoxTableTopPerformance";
@@ -33,7 +30,7 @@ const Asset = () => {
   ];
 
   return (
-    <div className={"w-auto h-full flex flex-col gap-y-5 px-6 "}>
+    <div className={"w-full h-full flex flex-col gap-y-5 px-6 "}>
       <div className="justify-start text-black text-2xl font-bold">
         Crypto Market Insights and Analytics
       </div>
@@ -41,17 +38,22 @@ const Asset = () => {
         TOP Cryptocurrencies Price List by Market Capitalization.
       </div>
 
-      <div className="px-[40px] flex gap-2 bg-gray-50">
+      <div className="px-[40px] flex gap-2">
         <BoxItemChart />
       </div>
 
-      <div className="h-auto grid auto-rows-min gap-4 md:grid-cols-2">
-        <div className=" rounded-xl bg-muted/50">
+      <div className=" w-full grid auto-rows-min gap-4 md:grid-cols-2">
+        <div className="">
           <BoxBitcoinDominance />
         </div>
-        <div className=" rounded-xl bg-muted/50">
-          <BoxFearGear />
-        </div>
+          <div className="W-full">
+            <BoxFearGear />
+          </div>
+      </div>
+      
+
+      <div className="">
+        <BoxTableTopPerformance />
       </div>
     </div>
   );

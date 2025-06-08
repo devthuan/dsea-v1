@@ -30,10 +30,10 @@ const BoxBitcoinDominance = () => {
     { id: "1m", label: "1m" },
   ];
 
-    return (
-    <div className="w-full h-full">
-      <div className="w-full h-full bg-white/70 shadow-md rounded-[32px] p-[24px] flex flex-col gap-y-[16px]">
-      <div className="flex justify-between items-center">
+  return (
+    <div className="w-full h-full ">
+      <div className="w-full h-full p-6  flex flex-col gap-y-[16px] rounded-md shadow-sm border border-gray-200">
+        <div className="flex justify-between items-center">
           <h1 className="h-auto justify-start text-black text-2xl font-bold">
             Bitcoin Dominance
           </h1>
@@ -45,7 +45,7 @@ const BoxBitcoinDominance = () => {
               tabType="type1_1"
             />
           </div>
-        </div> 
+        </div>
         <div className="w-full h-auto flex justify-between items-center">
           <div className="inline-flex justify-start items-center gap-3">
             <div className="px-4 py-1 bg-[#76e1db] rounded-[60px] flex justify-center items-center gap-2.5">

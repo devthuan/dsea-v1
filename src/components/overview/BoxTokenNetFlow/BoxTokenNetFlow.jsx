@@ -54,7 +54,7 @@ const BoxTokenNetFlow = () => {
   ];
 
   return (
-    <div className="w-full h-full  rounded-md shadow-lg border border-gray-100 p-4">
+    <div className="w-full h-ful p-4 rounded-md shadow-md border border-gray-200">
       <div className=" mx-auto ">
         {/* Header */}
         <div className="mb-8">
@@ -176,7 +176,7 @@ const WhaleStatusTab = ({ activeTab, onTabChange }) => {
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       {/* Chart Section */}
       <div className="lg:col-span-2">
-        <div className=" rounded-xl p-6 border border-indigo-100 h-full flex items-center justify-center">
+        <div className=" rounded-md p-2 border border-indigo-100 h-full flex items-center justify-center">
           <CustomPieChartComponent width={600} height={400} outerRadius={120} />
         </div>
       </div>
@@ -184,13 +184,13 @@ const WhaleStatusTab = ({ activeTab, onTabChange }) => {
       {/* Stats Section */}
       <div className="space-y-6">
         {/* Time Period Selector */}
-        <div className="bg-white rounded-xl p-2 shadow-sm border border-gray-100">
+        <div className="bg-white rounded-md p-2  border border-gray-200">
           <div className="flex gap-2">
             {periods.map((period) => (
               <button
                 key={period.id}
                 onClick={() => setSelectedPeriod(period.id)}
-                className={`w-full p-1 rounded-lg text-center transition-all duration-200 ${
+                className={`w-full p-1 rounded-md text-center transition-all duration-200 ${
                   selectedPeriod === period.id
                     ? ` border-${period.color}-300 text-${period.color}-800 border-2`
                     : "bg-gray-50 hover:bg-gray-100 border border-gray-200"
@@ -203,7 +203,7 @@ const WhaleStatusTab = ({ activeTab, onTabChange }) => {
         </div>
 
         {/* Whale Activity Stats */}
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 space-y-6">
+        <div className="bg-white rounded-md p-2  border border-gray-200 space-y-6">
           <h4 className="text-lg font-semibold text-gray-800">
             Whale Activity
           </h4>

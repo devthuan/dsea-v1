@@ -9,7 +9,7 @@ import {
 
 const BoxInformationDetailToken = () => {
   return (
-    <div className="w-full h-full bg-white rounded-[32px] p-6 shadow-lg">
+    <div className="w-full h-full bg-white p-6 rounded-md shadow-md border border-gray-200">
       <div className="grid grid-cols-4 gap-6 h-full">
         {/* Token Info Section */}
         <div className="border-r border-gray-200 pr-6">

@@ -55,7 +55,7 @@ const BoxFOT = () => {
     }, []);
 
   return (
-    <div className="w-full h-full  rounded-[32px] p-[24px] bg-white">
+    <div className="w-full h-full  p-4 rounded-md shadow-sm border border-gray-200">
       <Tabs defaultValue="fundingRate" className="w-full ">
         <TabsList className=" mb-4 ">
           <TabsTrigger
@@ -77,7 +77,7 @@ const BoxFOT = () => {
             Trading view
           </TabsTrigger>
         </TabsList>
-        <TabsContent value="fundingRate">
+        <TabsContent value="fundingRate" className={"p-4"}>
           <NetFlowChart data={btcData} />
         </TabsContent>
         <TabsContent value="openInterest">

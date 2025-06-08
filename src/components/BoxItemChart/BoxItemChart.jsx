@@ -96,7 +96,7 @@ const BoxItemChart = ({
           return (
             <CarouselItem
               key={index}
-              className="mr-3 basis-1/4 bg-white p-4 rounded-lg border border-gray-200"
+              className="mr-3 basis-1/4 bg-white p-4 rounded-md border border-gray-200"
             >
               <div className="w-full h-full flex flex-col justify-between">
                 <div className="flex justify-between items-center">
@@ -109,7 +109,6 @@ const BoxItemChart = ({
                       <p className="text-gray-500 text-xs font-medium">
                         {subtitle}
                       </p>
-                      Overview
                     </div>
                   </div>
                 </div>

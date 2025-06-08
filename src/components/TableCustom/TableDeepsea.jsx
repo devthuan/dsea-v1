@@ -108,16 +108,11 @@ const allData = [
   },
 ];
 
-const columnsExample = [
-  { name: "Holder" },
-  { name: "Value" },
-  { name: "PCT" },
-  { name: "USD" },
-];
+const columnsExample = [{ name: "Whales" }, { name: "Asset" }, { name: "PNL" }];
 
-const ITEMS_PER_PAGE = 8;
+const ITEMS_PER_PAGE = 15;
 
-const TableCustom = ({
+const TableDeepsea = ({
   title = "Entities",
   columns = columnsExample,
   data = allData,
@@ -138,7 +133,7 @@ const TableCustom = ({
   const getPageNumbers = () => {
     const pages = [];
     const maxVisiblePages = 5;
-
+    
     let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
     let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
 
@@ -153,14 +148,14 @@ const TableCustom = ({
     return pages;
   };
   return (
-    <div className="w-full  mx-auto p-2">
-      <div className="w-full h-full relative bg-white rounded-md shadow-md border border-gray-200 overflow-hidden">
+    <div className="w-full  mx-auto ">
+      <div className="w-full h-full relative bg-white rounded-md shadow-md  overflow-hidden">
         {/* Header */}
-        <div className="px-5 py-4 bg-gradient-to-r from-slate-50 to-gray-50 border-b border-gray-200">
+        {/* <div className="px-5 py-4 bg-gradient-to-r from-slate-50 to-gray-50 border-b border-gray-200">
           <h1 className="text-xl font-bold text-gray-900 tracking-tight">
             {title}
           </h1>
-        </div>
+        </div> */}
 
         {/* Table Container */}
         <div className="overflow-x-auto">
@@ -186,14 +181,12 @@ const TableCustom = ({
               {currentData.map((item, index) => (
                 <tr
                   key={index}
-                  className="hover:bg-gray-50/70 transition-all duration-200 group border border-gray-200 last:border-b-0"
+                  className="hover:bg-gray-50/70 transition-all duration-200 group  last:border-b-0"
                 >
                   {/* Holder Column */}
                   <td className="px-5 py-2">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-gradient-to-br from-gray-200 to-gray-300 rounded-full flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-                        <div className="w-4 h-4 bg-gray-400 rounded-full"></div>
-                      </div>
+                      
                       <span className="text-gray-700 font-medium text-sm">
                         {item.holder}
                       </span>
@@ -214,12 +207,7 @@ const TableCustom = ({
                     </span>
                   </td>
 
-                  {/* USD Column */}
-                  <td className="px-5 py-2 text-right">
-                    <span className="text-gray-800 font-semibold text-sm">
-                      {item.usd}
-                    </span>
-                  </td>
+                
                 </tr>
               ))}
             </tbody>
@@ -313,4 +301,4 @@ const TableCustom = ({
   );
 };
 
-export default TableCustom;
+export default TableDeepsea;
