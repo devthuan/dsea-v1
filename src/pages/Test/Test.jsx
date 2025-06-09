@@ -18,6 +18,7 @@ import { images } from "@/assets";
 
 import React, { useRef, useEffect, useState } from "react";
 import { calculateTimeKey } from "@/util/formatNameKeySMC";
+import { bitcoinNetFlowServices } from "@/services/dashboard/bitcoinNetFlowService";
 
 const Test = () => {
   const [dataCandle, setDataCandle] = useState([]);
@@ -50,13 +51,12 @@ const Test = () => {
     console.log("Selected chain:", selectedChain.name);
     console.log("Current timestamp:", timestamp);
     console.log(calculateTimeKey(selectedChain.name, "1s", 0));
-
   };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await candleStrickService.fetchData();
+        const result = await bitcoinNetFlowServices.fetchData();
         console.log("Fetched result:", result); // Check what you're getting
         setDataCandle(result);
       } catch (error) {
@@ -67,39 +67,25 @@ const Test = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const listData = async () => {
+      await bitcoinNetFlowServices.listeningEvent({
+        callback: (newData) => {
+          console.log(newData);
+        },
+      });
+    };
+    //
+
+    listData();
+  }, []);
+
   // Log the current state to verify updates (this will show previous state until next render)
   useEffect(() => {
     console.log("Current dataCandle state:", dataCandle);
   }, [dataCandle]);
 
-  return (
-    <div className="">
-      <Select className="cursor-pointer mb-3">
-        <SelectTrigger className="w-[140px]">
-          <SelectValue placeholder="Select" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectGroup>
-            {chainOptions?.map((item, index) => {
-              return (
-                <SelectItem
-                  key={index}
-                  value={item.name}
-                  className="flex items-center gap-2"
-                  onClick={() => handleChainSelect(item)}
-                >
-                  {item.name}
-                </SelectItem>
-              );
-            })}
-          </SelectGroup>
-        </SelectContent>
-      </Select>
-      <div className="mt-3">
-        <CandlestickVolume data={dataCandle} />
-      </div>
-    </div>
-  );
+  return <div className="">test</div>;
 };
 
 export default Test;

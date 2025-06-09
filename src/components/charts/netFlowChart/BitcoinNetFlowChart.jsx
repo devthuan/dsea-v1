@@ -12,16 +12,9 @@ import {
   Brush,
 } from "recharts";
 
-const availableMetrics = [
-  { key: "balance", label: "Balance", color: "#EBBB4F" },
-  { key: "marketcap", label: "Market Cap", color: "#8B5CF6" },
-  { key: "price", label: "Price", color: "#F59E0B" },
-  { key: "volume", label: "Volume", color: "#06B6D4" },
-  { key: "dominance", label: "Dominance", color: "#EF4444" },
-];
 
-const StableCoinNetFlowChart = ({ data = [], keyLine = {} }) => {
-  console.log(keyLine)
+const BitcoinNetFlowChart = ({ data = [], keyLine = {} }) => {
+  
   // Tính toán Net Flow
   const processedData = data
     ?.map((item) => ({
@@ -239,4 +232,4 @@ const StableCoinNetFlowChart = ({ data = [], keyLine = {} }) => {
   );
 };
 
-export default StableCoinNetFlowChart;
+export default BitcoinNetFlowChart;

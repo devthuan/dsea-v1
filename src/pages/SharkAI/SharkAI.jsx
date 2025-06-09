@@ -319,9 +319,9 @@ export default function SharkAI() {
         </div>
 
         {/* Main Content */}
-        <div className=" max-h-[800px] flex-1 flex flex-col">
+        <div className=" max-h-screen h-[800px] flex-1 flex flex-col">
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto px-6 py-6 space-y-6">
+          <div className="h-full flex-1 overflow-y-auto px-6 py-6 space-y-6">
             {messages.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-full text-gray-500">
                 <TrendingUp className="w-16 h-16 mb-4 text-gray-300" />

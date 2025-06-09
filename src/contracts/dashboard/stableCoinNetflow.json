@@ -1,0 +1,469 @@
+{
+    "stableCoinNetflow":{
+        "address":"0x18B87Bb7df1175AF2984a12469976D49534B16F7",
+        "abi": [
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "narrativeKey",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "narrativeName",
+				"type": "string"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "storageContract",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "dateTimestamp",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "incomingUSD",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "outgoingUSD",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "int256",
+				"name": "netFlowUSD",
+				"type": "int256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "balanceUSD",
+				"type": "uint256"
+			}
+		],
+		"name": "DataUpdatedViaFactory",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "narrativeKey",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "newStorageAddress",
+				"type": "address"
+			}
+		],
+		"name": "StorageDeployed",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"name": "activeStorageContracts",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "activeTotalFlowStorage",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "admin",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_narrativeName",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_startDateTimestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_endDateTimestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_limit",
+				"type": "uint256"
+			}
+		],
+		"name": "getNarrativeFlowDataByDateRange",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "incomingUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "outgoingUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "int256",
+						"name": "netFlowUSD",
+						"type": "int256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "balanceUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lastUpdatedTimestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct NarrativeFlowStorage.FlowData[]",
+				"name": "allFlowData",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_narrativeName",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_pageNumber",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_pageSize",
+				"type": "uint256"
+			}
+		],
+		"name": "getPaginatedNarrativeFlowData",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "incomingUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "outgoingUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "int256",
+						"name": "netFlowUSD",
+						"type": "int256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "balanceUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lastUpdatedTimestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct NarrativeFlowStorage.FlowData[]",
+				"name": "pageData",
+				"type": "tuple[]"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalEntries",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_pageNumber",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_pageSize",
+				"type": "uint256"
+			}
+		],
+		"name": "getPaginatedTotalFlowData",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "incomingUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "outgoingUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "int256",
+						"name": "netFlowUSD",
+						"type": "int256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "balanceUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lastUpdatedTimestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct NarrativeFlowStorage.FlowData[]",
+				"name": "pageData",
+				"type": "tuple[]"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalEntries",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_startDateTimestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_endDateTimestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_limit",
+				"type": "uint256"
+			}
+		],
+		"name": "getTotalFlowDataByDateRange",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "incomingUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "outgoingUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "int256",
+						"name": "netFlowUSD",
+						"type": "int256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "balanceUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lastUpdatedTimestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct NarrativeFlowStorage.FlowData[]",
+				"name": "allFlowData",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "historicalStorageContracts",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "historicalTotalFlowStorages",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_narrativeName",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_dateTimestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_incomingUSD",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_outgoingUSD",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_marketCapOrBalanceUSD",
+				"type": "uint256"
+			}
+		],
+		"name": "updateNarrativeFlow",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_dateTimestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_totalIncomingUSD",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_totalOutgoingUSD",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_totalExchangeBalanceUSD",
+				"type": "uint256"
+			}
+		],
+		"name": "updateTotalStablecoinFlow",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+		]
+    }
+}

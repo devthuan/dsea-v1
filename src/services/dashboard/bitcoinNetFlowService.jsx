@@ -1,111 +1,95 @@
-import { fetchDataSmartContract, listenToEventSmartContract } from "../smartContractService";
-import dashboardContract from "@/contracts/dashboardContract.json";
+import { toUnits } from "@/util/toUnits";
+import {
+  fetchDataSmartContract,
+  listenToEventSmartContract,
+} from "../smartContractService";
+import bitcoinNetflow from "@/contracts/dashboard/bitcoinNetflow.json";
+import { convertTimestampToDateString } from "@/util/fotmatDate";
 
+const listMetric = [
+  { nameFunction: "getFlowsDataPointsBefore", label: "flows" },
+  { nameFunction: "getAUMDataPointsBefore", label: "aum" },
+  { nameFunction: "getMarketCapDataPointsBefore", label: "marketcap" },
+  { nameFunction: "getVolumeDataPointsBefore", label: "volume" },
+];
 
-export const bitcoinNetFlowServices =  {
-  
-  fetchData: async (type) => {
-    let dataContract;
-     let result;
-    //  create date now timestamp
-    let nowDate = new Date();
-    let nowTimestamp = Math.floor(nowDate.getTime() / 1000); // convert to seconds
-    let day30Ago = nowTimestamp - 30 * 24 * 60 * 60; // 30 days ago in seconds
-    let week30Ago = nowTimestamp - 30 * 24 * 60 * 60 * 7;
-    let month30Ago = nowTimestamp - 30 * 24 * 60 * 60 * 30;
+export const bitcoinNetFlowServices = {
+  fetchData: async ({ type, period }) => {
+    let now = new Date();
+    const startTime = now.getTime();
 
-    switch (type) {
-      case "day":
-        dataContract = dashboardContract["bitcoinNetFlowDay"];
-          result = await fetchDataSmartContract(
-            dataContract,
-            "getFlowInRange",
-            day30Ago,
-            nowTimestamp,
-            "BTC",
-            "binance"
-          );
-        break;
-      case "week":
-        dataContract = dashboardContract["bitcoinNetFlowWeek"];
-          result = await fetchDataSmartContract(
-            dataContract,
-            "getFlowInRange",
-            week30Ago,
-            nowTimestamp,
-            "BTC",
-            "binance"
-          );
-        break;
-      case "month":
-        dataContract = dashboardContract["bitcoinNetFlowMonth"];
-          result = await fetchDataSmartContract(
-            dataContract,
-            "getFlowInRange",
-            month30Ago,
-            nowTimestamp,
-            "BTC",
-            "binance"
-          );
-        break;
+    const contractData = bitcoinNetflow["bitcoinNetFlow"];
+
+    console.log("check address : ", contractData);
+    const currentMetric = listMetric.find(
+      (p) => p.label === type.toLowerCase()
+    );
+    let result = await fetchDataSmartContract(
+      contractData,
+      currentMetric.nameFunction,
+      startTime,
+      100
+    );
+
+    if (!result) {
+      console.error("Không lấy được dữ liệu nến từ smart contract");
+      return [];
     }
-    
-    console.log(result)
 
-    const formatData = result?.map((item) => {
-      const timeStamp = Number(item.timestamp);
-      return {
-        ...item,
-        time: new Date(timeStamp * 1000).toLocaleDateString(),
-        inflow: parseFloat(item.inflow),
-        outflow: parseFloat(item.outflow),
-        netflow: parseFloat(item.netflow),
-        balance: parseFloat(item.balance),
-      };
-    });
+    console.log("check data from service:", result);
+    console.log("check data from service length:", result.length);
+    const formattedData = result
+      .map((item) => {
+        const formatDate = convertTimestampToDateString(Number(item.timestamp));
+        return {
+          time: formatDate,
+          inFlow: Number(item.inflowUSD),
+          outFlow: Number(item.outflowUSD),
+          btcPriceUSD: Number(toUnits(item.btcPriceUSD, 8)) * 10000, // Chuyển chuỗi thành số
+          aumUSD: Number(toUnits(item.aumUSD, 8)) * 10000, // Chuyển chuỗi thành số
+          marketCapUSD: Number(toUnits(item.marketCapUSD, 8)) * 10000, // Chuyển chuỗi thành số
+          volumeUSD: Number(toUnits(item.volumeUSD, 8)) * 10000, // Chuyển chuỗi thành số
+          netFlow: Number(toUnits(item.netAssetsUSD, 8)),
+        };
+      })
+      .reverse();
 
-    return formatData;
+    // formattedData.sort((a, b) => a.time - b.time);
+    // formattedData.reverse();
+    console.log("Formatted data:", formattedData);
+    return formattedData;
   },
 
-    
-
-  listeningEvent : async ({type ="day" , callback}) => {
-    let dataContract;
-        switch(type) {
-          case "day":
-            dataContract = dashboardContract["bitcoinNetFlowDay"];
-          break;
-          case "week":
-            dataContract = dashboardContract["bitcoinNetFlowWeek"];
-          break;
-          case "month":
-            dataContract = dashboardContract["bitcoinNetFlowMonth"];
-          break;
-        }
+  listeningEvent: async ({ type = "day", callback }) => {
+    let dataContract = bitcoinNetflow["bitcoinNetFlow"];
 
     await listenToEventSmartContract(
       dataContract,
-      "FlowTotalRecorded",
+      "GlobalDataPointRecorded",
       (event) => {
+        console.log(event);
         if (event) {
           const result = event.returnValues;
           const timeStamp = Number(result.timestamp);
 
-          console.log("check event: ", event)
-          const dataFormat = {
-            ...result,
-            time: new Date(timeStamp * 1000).toLocaleDateString(),
-            inflow: parseFloat(result.inflow),
-            outflow: parseFloat(result.outflow),
-            netflow: parseFloat(result.netflow),
-            balance: parseFloat(result.balance),
+          console.log("check event: ", event);
+          const formatDate = convertTimestampToDateString(
+            Number(result.timestamp)
+          );
+          const formattedData = {
+            time: formatDate,
+            inFlow: Number(result.inflowUSD),
+            outFlow: Number(result.outflowUSD),
+            btcPriceUSD: Number(toUnits(result.btcPriceUSD, 8)) * 10000, // Chuyển chuỗi thành số
+            aumUSD: Number(toUnits(result.aumUSD, 8)) * 10000, // Chuyển chuỗi thành số
+            marketCapUSD: Number(toUnits(result.marketCapUSD, 8)) * 10000, // Chuyển chuỗi thành số
+            volumeUSD: Number(toUnits(result.volumeUSD, 8)) * 10000, // Chuyển chuỗi thành số
+            netFlow: Number(toUnits(result.netAssetsUSD, 8)),
           };
 
-          callback(dataFormat);
+          callback(formattedData);
         }
       }
     );
-  }
-    
+  },
 };
-

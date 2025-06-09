@@ -1,0 +1,1308 @@
+{
+    "bitcoinNetFlow":{
+        "address":"0x806e1BE2abA356E4212D3D021C2daf515dA2ce6a",
+        "abi": [
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			}
+		],
+		"name": "OwnableInvalidOwner",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "OwnableUnauthorizedAccount",
+		"type": "error"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "enum BitcoinNetFlowFactory.DataType",
+				"name": "dataType",
+				"type": "uint8"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "segmentAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "segmentIndexInRegistry",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "lastEntryTimestampInSegment",
+				"type": "uint256"
+			}
+		],
+		"name": "DataSegmentMarkedFull",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "enum BitcoinNetFlowFactory.DataType",
+				"name": "dataType",
+				"type": "uint8"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "segmentAddress",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "inflowUSD",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "outflowUSD",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "btcPriceUSD",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "netAssetsUSD",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "aumUSD",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "marketCapUSD",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "volumeUSD",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "bool",
+				"name": "wasAnUpdate",
+				"type": "bool"
+			}
+		],
+		"name": "GlobalDataPointRecorded",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "enum BitcoinNetFlowFactory.DataType",
+				"name": "dataType",
+				"type": "uint8"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "segmentAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "segmentIndexInRegistry",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "creationBlockTimestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "NewDataSegmentDeployed",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "aumUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "inflowContextUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "outflowContextUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "btcPriceContextUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "netAssetsContextUSD",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct BitcoinNetFlowFactory.AUMWithContextInput",
+				"name": "input",
+				"type": "tuple"
+			}
+		],
+		"name": "recordAUMData",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "inflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "outflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "btcPriceUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "netAssetsUSD",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct BitcoinNetFlowFactory.FlowsCoreInput",
+				"name": "input",
+				"type": "tuple"
+			}
+		],
+		"name": "recordFlowsData",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "marketCapUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "inflowContextUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "outflowContextUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "btcPriceContextUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "netAssetsContextUSD",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct BitcoinNetFlowFactory.MarketCapWithContextInput",
+				"name": "input",
+				"type": "tuple"
+			}
+		],
+		"name": "recordMarketCapData",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "volumeUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "inflowContextUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "outflowContextUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "btcPriceContextUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "netAssetsContextUSD",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct BitcoinNetFlowFactory.VolumeWithContextInput",
+				"name": "input",
+				"type": "tuple"
+			}
+		],
+		"name": "recordVolumeData",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_eT",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_l",
+				"type": "uint256"
+			}
+		],
+		"name": "getAUMDataPointsBefore",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "inflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "outflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "btcPriceUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "netAssetsUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "aumUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "marketCapUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "volumeUSD",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct NetFlowDataSegment.DataPoint[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_sT",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_eT",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_l",
+				"type": "uint256"
+			}
+		],
+		"name": "getAUMDataPointsInRange",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "inflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "outflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "btcPriceUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "netAssetsUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "aumUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "marketCapUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "volumeUSD",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct NetFlowDataSegment.DataPoint[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_eT",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_l",
+				"type": "uint256"
+			}
+		],
+		"name": "getFlowsDataPointsBefore",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "inflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "outflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "btcPriceUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "netAssetsUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "aumUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "marketCapUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "volumeUSD",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct NetFlowDataSegment.DataPoint[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_sT",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_eT",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_l",
+				"type": "uint256"
+			}
+		],
+		"name": "getFlowsDataPointsInRange",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "inflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "outflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "btcPriceUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "netAssetsUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "aumUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "marketCapUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "volumeUSD",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct NetFlowDataSegment.DataPoint[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getLatestAUMDataPoint",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "inflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "outflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "btcPriceUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "netAssetsUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "aumUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "marketCapUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "volumeUSD",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct NetFlowDataSegment.DataPoint",
+				"name": "dp",
+				"type": "tuple"
+			},
+			{
+				"internalType": "bool",
+				"name": "f",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getLatestFlowsDataPoint",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "inflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "outflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "btcPriceUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "netAssetsUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "aumUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "marketCapUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "volumeUSD",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct NetFlowDataSegment.DataPoint",
+				"name": "dp",
+				"type": "tuple"
+			},
+			{
+				"internalType": "bool",
+				"name": "f",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getLatestMarketCapDataPoint",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "inflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "outflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "btcPriceUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "netAssetsUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "aumUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "marketCapUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "volumeUSD",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct NetFlowDataSegment.DataPoint",
+				"name": "dp",
+				"type": "tuple"
+			},
+			{
+				"internalType": "bool",
+				"name": "f",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getLatestVolumeDataPoint",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "inflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "outflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "btcPriceUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "netAssetsUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "aumUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "marketCapUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "volumeUSD",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct NetFlowDataSegment.DataPoint",
+				"name": "dp",
+				"type": "tuple"
+			},
+			{
+				"internalType": "bool",
+				"name": "f",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_eT",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_l",
+				"type": "uint256"
+			}
+		],
+		"name": "getMarketCapDataPointsBefore",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "inflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "outflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "btcPriceUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "netAssetsUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "aumUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "marketCapUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "volumeUSD",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct NetFlowDataSegment.DataPoint[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_sT",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_eT",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_l",
+				"type": "uint256"
+			}
+		],
+		"name": "getMarketCapDataPointsInRange",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "inflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "outflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "btcPriceUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "netAssetsUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "aumUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "marketCapUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "volumeUSD",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct NetFlowDataSegment.DataPoint[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "enum BitcoinNetFlowFactory.DataType",
+				"name": "_dataType",
+				"type": "uint8"
+			}
+		],
+		"name": "getSegmentCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "enum BitcoinNetFlowFactory.DataType",
+				"name": "_dataType",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_segmentIndex",
+				"type": "uint256"
+			}
+		],
+		"name": "getSegmentInfo",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "segmentContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "firstEntryTimestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lastEntryTimestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "creationBlockTimestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "markedFullBlockTimestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isConsideredFullByFactory",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct BitcoinNetFlowFactory.SegmentInfo",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_eT",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_l",
+				"type": "uint256"
+			}
+		],
+		"name": "getVolumeDataPointsBefore",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "inflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "outflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "btcPriceUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "netAssetsUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "aumUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "marketCapUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "volumeUSD",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct NetFlowDataSegment.DataPoint[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_sT",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_eT",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_l",
+				"type": "uint256"
+			}
+		],
+		"name": "getVolumeDataPointsInRange",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "inflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "outflowUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "btcPriceUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "netAssetsUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "aumUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "marketCapUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "volumeUSD",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct NetFlowDataSegment.DataPoint[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "enum BitcoinNetFlowFactory.DataType",
+				"name": "",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "segmentRegistries",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "segmentContractAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "firstEntryTimestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "lastEntryTimestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "creationBlockTimestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "markedFullBlockTimestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "isConsideredFullByFactory",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
+    }
+}
