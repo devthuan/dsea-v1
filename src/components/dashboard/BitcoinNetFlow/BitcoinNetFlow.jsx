@@ -144,7 +144,7 @@ const BitcoinNetFlow = () => {
           </div>
 
           {/* Time Period Tabs */}
-          <Tabs value={activeTab} onValueChange={handleChooseTab}>
+          {/* <Tabs value={activeTab} onValueChange={handleChooseTab}>
             <TabsList className="grid w-full grid-cols-3">
               {tabsData.map((tab) => (
                 <TabsTrigger key={tab.id} value={tab.id} className={"text-xs"}>
@@ -152,7 +152,7 @@ const BitcoinNetFlow = () => {
                 </TabsTrigger>
               ))}
             </TabsList>
-          </Tabs>
+          </Tabs> */}
         </div>
       </CardHeader>
 

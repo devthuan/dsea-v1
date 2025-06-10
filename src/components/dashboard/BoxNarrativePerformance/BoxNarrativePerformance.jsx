@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowUp, ArrowDown, ChevronRight } from "lucide-react";
 import LineChartReChart from "@/components/charts/LineChart/TinyLineChart";
 import TabButtons from "@/components/TabButtons/TabButtons";
 import { images } from "@/assets";
+import { narrativePerformService } from "@/services/dashboard/narrativePerformService";
 
 const BoxNarrativePerformance = () => {
   const [activeTab, setActiveTab] = useState("24h");
+  const [dataSMC, setDataSMC] = useState([]);
 
   const tabsData = [
     { id: "24h", label: "24h" },
@@ -18,12 +20,12 @@ const BoxNarrativePerformance = () => {
   const cardPriceData = {
     "24h": [
       {
-        label: "Bitcoin",
-        percentageChange: "3.96",
+        label: "Bitcoin", //narrtvie
+        percentageChange: "3.96", //p
         percentageDom: "3.96",
         trend: "up",
         icon: images.btcIcon,
-        color: "#F7931A",
+        // color: "#F7931A",
       },
       {
         label: "Ethereum",
@@ -286,6 +288,32 @@ const BoxNarrativePerformance = () => {
   };
 
   const overallData = calculateOverallPercentage();
+  const fetchData = async () => {
+    try {
+      const result = await narrativePerformService.fetchData();
+      console.log("Fetched result:", result); // Check what you're getting
+      setDataSMC(result);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const listData = async () => {
+      await narrativePerformService.listeningEvent({
+        callback: (newData) => {
+          console.log(newData);
+          newData ? fetchData() : null;
+        },
+      });
+    };
+    //
+
+    listData();
+  }, []);
 
   return (
     <div className="rounded-xl bg-gray-50 p-4 border border-gray-100 shadow-sm">
@@ -303,7 +331,7 @@ const BoxNarrativePerformance = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
         {/* Cards Section */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+        <div className="grid grid-cols-2 grid-rows-3 md:grid-cols-3 gap-2">
           {/* Overall Card */}
           <PriceCard
             label="All"
@@ -314,7 +342,18 @@ const BoxNarrativePerformance = () => {
           />
 
           {/* Cryptocurrency Cards */}
-          {cardPriceData[activeTab]?.map((item, index) => (
+          {/* {cardPriceData[activeTab]?.map((item, index) => (
+            <PriceCard
+              key={index}
+              label={item.label}
+              percentageDom={`${item.percentageDom}%`}
+              percentageChange={item.percentageChange}
+              trend={item.trend}
+              icon={item.icon}
+              color={item.color}
+            />
+          ))} */}
+          {dataSMC?.map((item, index) => (
             <PriceCard
               key={index}
               label={item.label}
@@ -353,7 +392,7 @@ const BoxNarrativePerformance = () => {
                         // style={{ backgroundColor: item.color }}
                       >
                         {/* {item.icon} */}
-                        <img src={item.icon} alt=""  />
+                        <img src={item.icon} alt="" />
                       </div>
                       <span className="font-medium">{item.label}</span>
                     </div>
@@ -387,7 +426,7 @@ export const PercentageDisplay = ({ value, trend }) => {
   return (
     <div className={`flex items-center gap-1 ${color}`}>
       <ArrowIcon size={16} />
-      <span className="font-medium">{Math.abs(numValue)}%</span>
+      <span className="font-medium">{Math.round(numValue * 1000) / 1000}%</span>
     </div>
   );
 };
@@ -430,6 +469,7 @@ const PriceCard = ({
         </div>
         <span className={`text-xs font-medium ${textColor}`}>
           {percentageDom}
+          {/* {Math.round(percentageDom * 1000) / 1000}% */}
         </span>
       </div>
 

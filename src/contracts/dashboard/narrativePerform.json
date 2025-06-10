@@ -1,0 +1,659 @@
+{
+    "narrativePerform":{
+        "address":"0x7C61a31Ff566de89FaEFD3C7dd62Ce73655a616E",
+        "abi": [
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_initialAdmin",
+				"type": "address"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "narrativeKey",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "narrativeName",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "newStorageAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "storageIdentifier",
+				"type": "string"
+			}
+		],
+		"name": "DetailStorageDeployed",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newPageAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "pageId",
+				"type": "uint256"
+			}
+		],
+		"name": "HistoryPageDeployed",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "narrativeKey",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "narrativeName",
+				"type": "string"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "dateTimestamp",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "activeStorageAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "narrativeMarketCapUSD",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "int256",
+				"name": "marketCapChange24hPercentX100",
+				"type": "int256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "dominancePercentX10000",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint8",
+				"name": "topTokensCount",
+				"type": "uint8"
+			}
+		],
+		"name": "NarrativePerformanceUpdated",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_newAdmin",
+				"type": "address"
+			}
+		],
+		"name": "setAdmin",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "pageAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "snapshotTimestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "SnapshotArchived",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "topNDataAddr",
+				"type": "address"
+			}
+		],
+		"name": "TopNDataContractDeployedByFactory",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "string",
+				"name": "timeframeType",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "updateTimestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "TopNListUpdatedInSystem",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_narrativeName",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_dateTimestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_narrativeMarketCapUSD",
+				"type": "uint256"
+			},
+			{
+				"internalType": "int256",
+				"name": "_marketCapChange24hPercentX100",
+				"type": "int256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_dominancePercentX10000",
+				"type": "uint256"
+			},
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "tokenSymbol",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenMarketCapUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "int256",
+						"name": "change24hPercent_X100",
+						"type": "int256"
+					},
+					{
+						"internalType": "int256",
+						"name": "netInflowPercent_X100",
+						"type": "int256"
+					},
+					{
+						"internalType": "address",
+						"name": "tokenContractAddress",
+						"type": "address"
+					}
+				],
+				"internalType": "struct NarrativePerformanceDetailStorage.TokenPerformanceData[]",
+				"name": "_topTokensData",
+				"type": "tuple[]"
+			}
+		],
+		"name": "updateFullNarrativePerformance",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_timeframeType",
+				"type": "string"
+			},
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "narrativeName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "displayMetricMarketCap",
+						"type": "uint256"
+					},
+					{
+						"internalType": "int256",
+						"name": "displayMetricChangePercentX100",
+						"type": "int256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "displayMetricDominancePercentX10000",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "narrativeKey",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "string",
+						"name": "iconUrl",
+						"type": "string"
+					}
+				],
+				"internalType": "struct TopNarrativeEntry",
+				"name": "_newEntryData",
+				"type": "tuple"
+			}
+		],
+		"name": "updateNarrativeDataInTopN",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"name": "activeDetailStorageInfo",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "contractAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "firstRecordTimestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "lastRecordTimestamp",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "admin",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_narrativeName",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_dateTimestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "getFullNarrativePerformance",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "narrativeName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "dateTimestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "narrativeMarketCapUSD",
+						"type": "uint256"
+					},
+					{
+						"internalType": "int256",
+						"name": "marketCapChange24hPercentX100",
+						"type": "int256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "dominancePercentX10000",
+						"type": "uint256"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "tokenSymbol",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "tokenMarketCapUSD",
+								"type": "uint256"
+							},
+							{
+								"internalType": "int256",
+								"name": "change24hPercent_X100",
+								"type": "int256"
+							},
+							{
+								"internalType": "int256",
+								"name": "netInflowPercent_X100",
+								"type": "int256"
+							},
+							{
+								"internalType": "address",
+								"name": "tokenContractAddress",
+								"type": "address"
+							}
+						],
+						"internalType": "struct NarrativePerformanceDetailStorage.TokenPerformanceData[]",
+						"name": "topTokens",
+						"type": "tuple[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lastUpdatedTimestamp",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct NarrativePerformanceDetailStorage.DailyNarrativePerformance",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getTopNarratives1m",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "narrativeName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "displayMetricMarketCap",
+						"type": "uint256"
+					},
+					{
+						"internalType": "int256",
+						"name": "displayMetricChangePercentX100",
+						"type": "int256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "displayMetricDominancePercentX10000",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "narrativeKey",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "string",
+						"name": "iconUrl",
+						"type": "string"
+					}
+				],
+				"internalType": "struct TopNarrativeEntry[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getTopNarratives1w",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "narrativeName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "displayMetricMarketCap",
+						"type": "uint256"
+					},
+					{
+						"internalType": "int256",
+						"name": "displayMetricChangePercentX100",
+						"type": "int256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "displayMetricDominancePercentX10000",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "narrativeKey",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "string",
+						"name": "iconUrl",
+						"type": "string"
+					}
+				],
+				"internalType": "struct TopNarrativeEntry[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getTopNarratives1y",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "narrativeName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "displayMetricMarketCap",
+						"type": "uint256"
+					},
+					{
+						"internalType": "int256",
+						"name": "displayMetricChangePercentX100",
+						"type": "int256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "displayMetricDominancePercentX10000",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "narrativeKey",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "string",
+						"name": "iconUrl",
+						"type": "string"
+					}
+				],
+				"internalType": "struct TopNarrativeEntry[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getTopNarratives24h",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "narrativeName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "displayMetricMarketCap",
+						"type": "uint256"
+					},
+					{
+						"internalType": "int256",
+						"name": "displayMetricChangePercentX100",
+						"type": "int256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "displayMetricDominancePercentX10000",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "narrativeKey",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "string",
+						"name": "iconUrl",
+						"type": "string"
+					}
+				],
+				"internalType": "struct TopNarrativeEntry[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "historicalDetailStorageInfos",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "contractAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "firstRecordTimestamp",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "lastRecordTimestamp",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "topNDataContractInstance",
+		"outputs": [
+			{
+				"internalType": "contract TopNData",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
+    }
+}
